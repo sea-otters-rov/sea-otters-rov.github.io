@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl:*)",
+      "Bash(pdftotext:*)",
+      "Bash(pdfinfo:*)",
+      "Bash(mkdir:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(wc:*)",
+      "Bash(jq:*)",
+      "Bash(file:*)",
+      "Bash(du:*)",
+      "Bash(git:*)",
+      "Bash(python3:*)",
+      "Bash(node:*)",
+      "Bash(npx serve:*)",
+      "WebFetch",
+      "WebSearch",
+      "Read",
+      "Write",
+      "Edit"
+    ]
+  }
+}

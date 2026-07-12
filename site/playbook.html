@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rookie Playbook — Sea Otters ROV Club</title>
+  <meta name="description" content="Hard-won community wisdom for new MATE ROV teams: frame and buoyancy tuning, electronics and control stacks, a build cheatsheet, team roles, practice regimen, and the mistakes that sink rookies.">
+  <script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('rov-theme');if(t)d.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%A6%A6%3C/text%3E%3C/svg%3E">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <div class="pagehead">
+      <div class="wrap">
+        <nav class="breadcrumbs"><a href="index.html">Home</a> / Rookie Playbook</nav>
+        <span class="eyebrow">Field-tested wisdom</span>
+        <h1>The Rookie Playbook</h1>
+        <p class="lead">The official manuals tell you the <em>rules</em>. This tells you what actually works — distilled from veteran teams, homebuilt-ROV forums, Blue Robotics guides, and championship technical reports. Read it before you spend a single dollar.</p>
+      </div>
+    </div>
+
+    <div class="wrap section">
+      <div class="article">
+        <aside class="toc" aria-label="On this page">
+          <div class="toc__title">On this page</div>
+          <ul>
+            <li><a href="#design">Design fundamentals</a></li>
+            <li><a href="#electronics">Electronics &amp; control</a></li>
+            <li><a href="#cheatsheet">Build cheatsheet</a></li>
+            <li><a href="#roles">Team roles</a></li>
+            <li><a href="#practice">Practice &amp; strategy</a></li>
+            <li><a href="#mistakes">Mistakes that sink teams</a></li>
+          </ul>
+        </aside>
+
+        <div class="prose">
+
+          <div class="callout callout--tip reveal">
+            <div class="callout__title">🌊 The one rule that beats all others</div>
+            <p class="mb-0">Teams don't lose because their robot is bad. They lose because they <strong>under-practice piloting</strong> and treat <strong>documentation as a last-minute chore</strong>. Build early, then spend your remaining time driving and writing — not gold-plating hardware.</p>
+          </div>
+
+          <section id="design">
+            <h2 class="reveal">Design fundamentals</h2>
+
+            <h3 class="reveal">Frame: start cheap, upgrade later</h3>
+            <p class="reveal">Every veteran gives the same progression. Don't skip steps.</p>
+            <div class="table-wrap reveal">
+              <table>
+                <thead><tr><th>Material</th><th>When</th><th>Why</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>½" PVC pipe</strong></td><td>Year one, always</td><td>Cheap, sold everywhere, cut with a hand tool, forgiving of mistakes. Every beginner kit uses it.</td></tr>
+                  <tr><td><strong>HDPE sheet</strong></td><td>Level-2 upgrade</td><td>Doesn't absorb water, resists cracking, can be cut into a lighter hydrodynamic shape.</td></tr>
+                  <tr><td><strong>Aluminium extrusion</strong></td><td>Advanced, sparingly</td><td>Strong &amp; stiff — but conducts electricity, corrodes when scratched, and is heavy. Veterans use it for rails and camera arms, not the whole frame.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="reveal"><strong>Rule of thumb:</strong> master waterproofing and thruster placement on a PVC frame first. Graduate to HDPE/aluminium once you understand what actually breaks.</p>
+
+            <h3 class="reveal">Thrusters: don't over-engineer year one</h3>
+            <ul class="reveal">
+              <li><strong>Simple layout (start here):</strong> 4 horizontal thrusters (forward / reverse / yaw / strafe) + 2 vertical (up / down). Easy to wire, easy to reason about in code.</li>
+              <li><strong>Vectored layout:</strong> thrusters at 45° let fewer motors produce combined vectors — but you need mixing math you can debug under time pressure. Save it for year two.</li>
+            </ul>
+            <div class="callout reveal">
+              <div class="callout__title">Rookie call</div>
+              <p class="mb-0">A simple 4+2 arrangement you understand completely beats a vectored layout you can't fix when it misbehaves 10 minutes before your run.</p>
+            </div>
+
+            <h3 class="reveal">Buoyancy: tune it, don't calculate it</h3>
+            <p class="reveal">The most-cited community advice on buoyancy is refreshingly un-mathematical:</p>
+            <ul class="reveal">
+              <li><strong>"It's easier to add weight than to add floats."</strong> Build the frame slightly over-buoyant on purpose, then trim down with ballast.</li>
+              <li><strong>Floats on top, weights on the bottom.</strong> Keeps the ROV self-righting instead of tumbling. (Center of gravity low, center of buoyancy above it.)</li>
+              <li><strong>Aim slightly positive, not perfectly neutral.</strong> If you lose power or the tether snags, the vehicle rises safely instead of sinking into the silt.</li>
+              <li><strong>Tune empirically:</strong> float the ROV in a tub with a mesh bag of washers/BBs, add or remove weight until it sits right. Split weight evenly left/right and front/back — uneven ballast is the #1 cause of an ROV that lists to one side.</li>
+            </ul>
+            <div class="callout callout--warn reveal">
+              <div class="callout__title">Foam trap</div>
+              <p class="mb-0">Pool noodles <strong>compress and waterlog</strong> — your ROV will sink lower by the end of a pool session. Use rigid <strong>XPS "blue/pink board" insulation foam</strong> (~$6 a sheet) for anything past the first prototype. Plain white bead foam (EPS) also soaks up water — avoid it.</p>
+            </div>
+
+            <h3 class="reveal">Waterproofing: the vacuum test is non-negotiable</h3>
+            <ul class="reveal">
+              <li><strong>Use tubes, not boxes.</strong> Cylindrical / domed enclosures spread water pressure evenly. That's why every commercial pod is a tube.</li>
+              <li><strong>Vacuum-test every enclosure before every dive.</strong> Pull a vacuum, watch the gauge. If it doesn't hold on dry land, it <em>will</em> flood underwater. Test the empty enclosure submerged before you trust it with your Raspberry Pi.</li>
+              <li><strong>Cheap DIY connectors (~$6):</strong> a PEX faucet swivel + PVC riser, cable through stepped heat-shrink, cavity potted in epoxy — field-tested to ~40&nbsp;m. Fully embed solder joints in epoxy so water can't wick down the strands.</li>
+              <li><strong>Beware "IP68" labels.</strong> Treat any IP68 servo/camera as "probably fine in a pool for 15 minutes," not "guaranteed" — pot and seal it yourself as backup.</li>
+              <li><strong>Stop galvanic corrosion.</strong> Stainless bolts against aluminium eat the aluminium in a wet environment. Use Tef-Gel or dielectric grease on every dissimilar-metal joint.</li>
+            </ul>
+
+            <h3 class="reveal">Tether: the invisible anchor</h3>
+            <p class="reveal">A tether that's too heavy sinks and drags the ROV backward and down; too buoyant and your vertical thrusters fight the cable instead of moving the vehicle. Aim for <strong>neutral-to-slightly-positive</strong> buoyancy — add small foam floats along flat Cat5 cable, or bundle it with floating polypropylene line. Many "underpowered" ROVs are just fighting their own cable the whole run.</p>
+            <div class="callout callout--crit reveal">
+              <div class="callout__title">⚠ Never tug the tether</div>
+              <p class="mb-0">Pulling the tether to speed up recovery is a <strong>rule penalty</strong>, not a technique. Your tether manager pays out and reels in slack smoothly — never hauls the ROV in by the cable.</p>
+            </div>
+          </section>
+
+          <section id="electronics">
+            <h2 class="reveal">Electronics &amp; control</h2>
+            <p class="reveal">Three architectures show up again and again. Pick the lowest tier that meets your ambitions — you can always level up.</p>
+            <div class="table-wrap reveal">
+              <table>
+                <thead><tr><th>Stack</th><th>What it gives you</th><th>Best for</th></tr></thead>
+                <tbody>
+                  <tr><td>Arduino + Basic&nbsp;ESC example code</td><td>Direct PWM thruster control, minimal dependencies</td><td>Rookies, first working prototype</td></tr>
+                  <tr><td>Raspberry&nbsp;Pi + Arduino/ESP32 hybrid</td><td>Pi streams video &amp; telemetry; the micro does fast real-time PWM</td><td>Teams adding cameras &amp; logic</td></tr>
+                  <tr><td>BlueOS + ArduSub (Pi + Navigator/Pixhawk)</td><td>Depth hold, stabilization, browser control UI "for free"</td><td>Well-resourced Ranger/Explorer teams</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="reveal">Thrusters &amp; motors</h3>
+            <ul class="reveal">
+              <li><strong>Commercial:</strong> Blue Robotics T100/T200 + one Basic ESC each. The T200 is the default competition choice — even at half throttle it out-muscles a bilge-pump thruster.</li>
+              <li><strong>Budget DIY:</strong> convert a 500–750&nbsp;GPH submersible bilge-pump cartridge (~$15–20) into a thruster and drive it with a brushed-motor RC ESC. A converted pump pulls ~4&nbsp;A at 12&nbsp;V — worth it for the thrust.</li>
+              <li><strong>Keep ESCs dry and onboard,</strong> close to the thrusters, to minimise voltage drop over a long tether.</li>
+            </ul>
+
+            <div class="callout callout--warn reveal">
+              <div class="callout__title">Fuse &amp; power rules the judges check</div>
+              <ul class="mb-0">
+                <li>One blade fuse (ATO/MINI) in the positive line, <strong>within 30&nbsp;cm</strong> of the power connector.</li>
+                <li>Measure your <strong>actual full-load amps in water</strong>, then pick the next standard fuse size up — don't guess from datasheets.</li>
+                <li>Run one thick power pair down the tether (not thin per-thruster wires) to cut resistive losses. For 25&nbsp;A over 50&nbsp;ft, 8&nbsp;AWG keeps voltage drop tolerable.</li>
+              </ul>
+            </div>
+
+            <h3 class="reveal">Cameras &amp; control</h3>
+            <ul class="reveal">
+              <li>Mount the <strong>main camera in the clear dome</strong> for a wide view; add a cheap second camera aimed at your claw for close-up task work.</li>
+              <li><strong>Standard USB gamepads</strong> (Xbox/PS) are the norm — nearly every open-source stack supports them. Good Python starting points: <span class="mono">piborg/Gamepad</span> and <span class="mono">Footleg/pygame-controller</span>.</li>
+              <li>Analog cameras = lower latency &amp; cheap; digital/HD = sharper for judges. For slow precision work, image clarity usually beats the last few milliseconds of latency.</li>
+            </ul>
+          </section>
+
+          <section id="cheatsheet">
+            <h2 class="reveal">Build cheatsheet</h2>
+
+            <h3 class="reveal">Buy-once tool kit</h3>
+            <div class="grid grid-2 reveal">
+              <ul class="mb-0">
+                <li>Temperature-controlled soldering iron + solder + wick</li>
+                <li>Digital multimeter (your most-used tool)</li>
+                <li>Heat gun for heat-shrink</li>
+                <li>Wire strippers, flush cutters, crimpers, needle-nose pliers</li>
+              </ul>
+              <ul class="mb-0">
+                <li>PVC pipe cutter (cleaner than a hacksaw)</li>
+                <li>Hot glue gun, electrical tape, zip ties</li>
+                <li>Screwdriver sets (6-in-1 + jeweler's)</li>
+                <li>Budget: <strong>$50–100</strong> covers a genuinely usable starter kit</li>
+              </ul>
+            </div>
+
+            <h3 class="reveal">Prototype in this order</h3>
+            <ol class="reveal">
+              <li><strong>One waterproof thruster + ESC in a bucket</strong> — prove you can spin and control a motor underwater before building anything else.</li>
+              <li><strong>The empty watertight enclosure</strong> — vacuum-test dry, then submerge it empty. Confirm the seal before trusting it with electronics.</li>
+              <li><strong>A 2-thruster "test mule"</strong> — validate your control code and gamepad mapping on a throwaway frame.</li>
+              <li><strong>Buoyancy on the bare frame</strong> — learn how much foam and ballast you actually need before final assembly.</li>
+            </ol>
+
+            <div class="callout callout--tip reveal">
+              <div class="callout__title">Pool-day habits</div>
+              <ul class="mb-0">
+                <li>Re-run the vacuum test <strong>before every session</strong> — seals degrade.</li>
+                <li><strong>Power off before you solder or probe</strong> a live circuit. Shorting "while just fixing one wire" fries control boards.</li>
+                <li>Rehearse the <strong>real mission tasks against a clock</strong>, not just "driving around."</li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="roles">
+            <h2 class="reveal">Team roles</h2>
+            <p class="reveal">MATE requires at least 3 students + a mentor, run like a company. Borrow the control-room structure real subsea operations use:</p>
+            <div class="grid grid-3 reveal">
+              <div class="card card--rail card--d1">
+                <span class="card__kicker">Role 01</span>
+                <h3>Pilot</h3>
+                <p>Primary hands on the main controller. Owns vehicle movement and task execution. Stays locked on the main camera feed.</p>
+              </div>
+              <div class="card card--rail card--d2">
+                <span class="card__kicker">Role 02</span>
+                <h3>Co-pilot</h3>
+                <p>Runs the manipulator, aux cameras, and checklists. Calls out position and orientation so the pilot never has to look away.</p>
+              </div>
+              <div class="card card--rail card--d3">
+                <span class="card__kicker">Role 03</span>
+                <h3>Tether manager</h3>
+                <p>Pays out and reels in slack smoothly, keeps the cable clear of obstacles — and never pulls the ROV in by the tether.</p>
+              </div>
+            </div>
+            <p class="reveal"><strong>Rotate roles in practice.</strong> A team that depends on one irreplaceable pilot is fragile the day that student is sick — or graduates.</p>
+          </section>
+
+          <section id="practice">
+            <h2 class="reveal">Practice &amp; strategy</h2>
+            <ul class="reveal">
+              <li><strong>Rehearse real tasks against the clock.</strong> Pool time is for mission rehearsal, not joyriding.</li>
+              <li><strong>Debrief every run:</strong> what you designed, how the run went, how you communicated under pressure, how you reacted when something broke. (The free <span class="mono">E-Compete</span> tool structures this.)</li>
+              <li><strong>Know when the clock stops.</strong> A mission isn't done until the ROV is back at the surface and in a teammate's hands. Practice a fast, rehearsed retrieval.</li>
+              <li><strong>Plan task order</strong> to minimise up/down transits — you don't have to surface between tasks.</li>
+            </ul>
+            <div class="callout reveal">
+              <div class="callout__title">Documentation is 40% of your score</div>
+              <p>The engineering &amp; communication deliverables — technical documentation, presentation, marketing, safety — are worth roughly <strong>40% of the total</strong>. Start your technical report at the <em>start</em> of the season, not the night before.</p>
+              <p class="mb-0"><strong>Read past winning technical reports</strong> (MATE archives them) to calibrate what "good" looks like. And note: the 2026 rules <strong>ban AI-written documentation</strong> — the writing must be yours.</p>
+            </div>
+          </section>
+
+          <section id="mistakes">
+            <h2 class="reveal">Mistakes that sink teams</h2>
+            <ul class="checklist reveal">
+              <li>Over-trusting "waterproof" ratings — always vacuum-test your own enclosures.</li>
+              <li>Building the real buoyancy plan around pool noodles that waterlog mid-season.</li>
+              <li>Ignoring tether drag until competition day.</li>
+              <li>Mixed-metal connector corrosion — no Tef-Gel / dielectric grease.</li>
+              <li>Soldering a live circuit "just to touch up one joint."</li>
+              <li>Weeks on hardware, one session of piloting practice.</li>
+              <li>Treating the technical report as a night-before writeup.</li>
+              <li>Never fully reading the 70+ page rules — losing avoidable penalty points.</li>
+              <li>No mentor with real hands-on electrical/mechanical experience.</li>
+            </ul>
+            <p class="reveal">Want the sources and deep links behind all of this? They live on the <a href="resources.html">Resources page</a> — curated tutorials, forums, championship reports, and open-source code.</p>
+          </section>
+
+          <div class="hero__actions reveal" style="margin-top:2.5rem">
+            <a class="btn btn--primary" href="build.html">Go to the build guide</a>
+            <a class="btn btn--ghost" href="resources.html">See all resources</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

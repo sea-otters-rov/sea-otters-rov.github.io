@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Classes — Sea Otters ROV Club</title>
+  <meta name="description" content="SCOUT vs NAVIGATOR vs RANGER: power limits, weight caps, cameras, fluid power, scoring, and how to choose the right MATE ROV class for a rookie team.">
+  <script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('rov-theme');if(t)d.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%A6%A6%3C/text%3E%3C/svg%3E">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <div class="pagehead">
+      <div class="wrap">
+        <nav class="breadcrumbs"><a href="index.html">Home</a> / The Classes</nav>
+        <span class="eyebrow">Pick your level</span>
+        <h1>Five classes, one ladder</h1>
+        <p class="lead">MATE runs five competition classes from rookie to pro. Our club targets the bottom three — <strong>SCOUT</strong>, <strong>NAVIGATOR</strong>, and <strong>RANGER</strong>. Here's exactly how they differ, and how to choose.</p>
+      </div>
+    </div>
+
+    <div class="wrap section">
+      <div class="article">
+        <aside class="toc" aria-label="On this page">
+          <div class="toc__title">On this page</div>
+          <ul>
+            <li><a href="#ladder">The five-class ladder</a></li>
+            <li><a href="#three">Our three classes</a></li>
+            <li><a href="#compare">Full comparison</a></li>
+            <li><a href="#ranger">RANGER hard numbers</a></li>
+            <li><a href="#choose">How to choose</a></li>
+          </ul>
+        </aside>
+
+        <div class="prose">
+
+          <section id="ladder">
+            <h2 class="reveal">The five-class ladder</h2>
+            <p class="reveal">Each class turns up the voltage, the current, and the difficulty. SCOUT and NAVIGATOR are <strong>regional-only</strong> classes — simpler and cheaper. RANGER, PIONEER, and EXPLORER advance to the World Championship.</p>
+            <div class="table-wrap reveal">
+              <table>
+                <thead><tr><th>Class</th><th>Power</th><th>Max weight</th><th>Camera</th><th>Level</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="badge badge--d1">SCOUT</span></td><td>12 V / 15 A</td><td>none</td><td>optional</td><td>True entry level</td></tr>
+                  <tr><td><span class="badge badge--d2">NAVIGATOR</span></td><td>12 V / 15 A</td><td>none</td><td>required</td><td>Beginner–intermediate</td></tr>
+                  <tr><td><span class="badge badge--d3">RANGER</span></td><td>12 V / 25 A</td><td>25 kg</td><td>required</td><td>Intermediate (our top target)</td></tr>
+                  <tr><td>PIONEER</td><td>48 V or 12 V</td><td>35 kg</td><td>required</td><td>Advanced</td></tr>
+                  <tr><td>EXPLORER</td><td>48 V / 30 A</td><td>35 kg</td><td>required</td><td>Top class (uni-level)</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="callout reveal">
+              <div class="callout__title">Regional vs. World Championship</div>
+              <p class="mb-0">SCOUT &amp; NAVIGATOR compete only at regionals. RANGER wins at a regional to advance to the World Championship, where (new for 2026) tasks are split across three real research venues in St.&nbsp;John's, Newfoundland — and you get only <strong>one attempt per task</strong>.</p>
+            </div>
+          </section>
+
+          <section id="three">
+            <h2 class="reveal">Our three classes at a glance</h2>
+            <div class="grid grid-3 reveal">
+              <div class="card card--rail card--d1">
+                <div class="card__icon">🔰</div>
+                <h3>SCOUT</h3>
+                <p><strong>400 points.</strong> The simplest class: 12&nbsp;V / 15&nbsp;A, cameras optional, manual pumps only, no lasers. A hand-drawn wiring diagram is fine. Perfect for a first-year crew.</p>
+              </div>
+              <div class="card card--rail card--d2">
+                <div class="card__icon">⚓</div>
+                <h3>NAVIGATOR</h3>
+                <p><strong>450 points.</strong> A real step up: cameras required, powered fluid power allowed, lasers permitted, and a CAD wiring diagram is mandatory. The independent battery-powered float appears here.</p>
+              </div>
+              <div class="card card--rail card--d3">
+                <div class="card__icon">🚀</div>
+                <h3>RANGER</h3>
+                <p><strong>745 points.</strong> Nearly double the current (25&nbsp;A), a 25&nbsp;kg weight cap with a weight bonus, harder autonomous tasks, a mandatory JSEA safety document, and full Worlds-level documentation.</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="compare">
+            <h2 class="reveal">Full comparison</h2>
+            <p class="reveal">The details that actually change how you build. (RANGER numbers shown where it differs from the regional classes.)</p>
+            <div class="table-wrap reveal">
+              <table>
+                <thead><tr><th>Feature</th><th>SCOUT</th><th>NAVIGATOR</th><th>RANGER</th></tr></thead>
+                <tbody>
+                  <tr><td>Total possible score</td><td class="num">400</td><td class="num">450</td><td class="num">745</td></tr>
+                  <tr><td>Power / current</td><td>12 V / 15 A</td><td>12 V / 15 A</td><td>12 V / 25 A</td></tr>
+                  <tr><td>Max vehicle weight</td><td>none</td><td>none</td><td>25 kg (bonus if lighter)</td></tr>
+                  <tr><td>Demo run time</td><td>10 min</td><td>15 min</td><td>15 min</td></tr>
+                  <tr><td>Crew on deck</td><td>3–4</td><td>3–4</td><td>3–6</td></tr>
+                  <tr><td>Cameras</td><td>optional</td><td>required</td><td>required</td></tr>
+                  <tr><td>Lasers</td><td>not allowed</td><td>allowed (spec)</td><td>allowed (spec)</td></tr>
+                  <tr><td>Fluid power</td><td>manual pumps only</td><td>powered OK (quiz)</td><td>powered OK (quiz)</td></tr>
+                  <tr><td>Prop shrouding</td><td>enclosed or shrouded</td><td>IP-20 shroud</td><td>IP-20 shroud + gears</td></tr>
+                  <tr><td>Wiring diagram (SID)</td><td>hand-drawn OK</td><td>CAD required</td><td>CAD required</td></tr>
+                  <tr><td>Fuse type</td><td>ATO/MINI blade</td><td>ATO/MINI blade</td><td>ATO/MINI blade</td></tr>
+                  <tr><td>Onboard battery (ROV)</td><td>no</td><td>no</td><td>no (float only)</td></tr>
+                  <tr><td>JSEA safety document</td><td>—</td><td>—</td><td>required (a gate!)</td></tr>
+                  <tr><td>Eng. &amp; Comms weight</td><td>~45%</td><td>~50%</td><td>~40%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="callout callout--tip reveal">
+              <div class="callout__title">The surprising truth</div>
+              <p class="mb-0">In every class, the paperwork — technical documentation, presentation, marketing, safety — is worth <strong>40–50% of your total score</strong>. That's <em>bigger than the pool run</em>. Rookie teams that treat documentation as an afterthought leave the single largest pile of points on the table. See <a href="scoring.html">Scoring &amp; Deliverables</a>.</p>
+            </div>
+          </section>
+
+          <section id="ranger">
+            <h2 class="reveal">RANGER hard numbers to know cold</h2>
+            <p class="reveal">If RANGER is your target, these are the specs you design around from day one.</p>
+            <div class="table-wrap reveal">
+              <table>
+                <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
+                <tbody>
+                  <tr><td>Nominal voltage</td><td>12 VDC (design for 14.8 V max)</td></tr>
+                  <tr><td>Max current</td><td>25 A — measured as Full Load Amps <em>in water</em>, all thrusters full</td></tr>
+                  <tr><td>Fuse</td><td>ATO/MINI blade, 32 VDC, within 30 cm of the power connector</td></tr>
+                  <tr><td>Connector</td><td>Red/black Anderson Powerpole, roll-crimped</td></tr>
+                  <tr><td>Max weight (in air)</td><td>25 kg — over that, you can't compete</td></tr>
+                  <tr><td>Weight bonus</td><td>&lt;15 kg = +10 pts · 15–20 kg = +5 pts · 20–25 kg = +0</td></tr>
+                  <tr><td>Shutdown</td><td>All function must stop &lt; 5 s after power is cut</td></tr>
+                  <tr><td>Hydraulic / pneumatic</td><td>≤ 150 psi / ≤ 40 psi</td></tr>
+                  <tr><td>Water</td><td>Fresh, chlorinated, −2 °C to 30 °C</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="callout callout--warn reveal">
+              <div class="callout__title">Build light — the points are real</div>
+              <p class="mb-0">The swing from a &lt;15 kg ROV to a 20+ kg one is a full <strong>10-point loss</strong> — roughly a whole sub-task's worth of points. Over-built, heavy vehicles literally get penalized.</p>
+            </div>
+          </section>
+
+          <section id="choose">
+            <h2 class="reveal">How to choose your class</h2>
+            <ul class="reveal">
+              <li><strong>First season ever, small budget, younger crew?</strong> Start with <span class="badge badge--d1">SCOUT</span>. Optional cameras and manual pumps keep the build honest and cheap.</li>
+              <li><strong>Comfortable with basic electronics, want cameras and a real float challenge?</strong> Step up to <span class="badge badge--d2">NAVIGATOR</span>.</li>
+              <li><strong>Ready to chase a World Championship berth?</strong> Commit to <span class="badge badge--d3">RANGER</span> — but respect the extra load: the JSEA, CAD diagrams, tighter safety, and full documentation.</li>
+            </ul>
+            <p class="reveal">Our crew placed 4th on their rookie run. The natural path to the podium is to consolidate on <strong>RANGER</strong> while using SCOUT/NAVIGATOR knowledge as the foundation — the mission storyline and most safety rules are shared across all three.</p>
+            <div class="hero__actions reveal" style="margin-top:1.5rem">
+              <a class="btn btn--primary" href="mission.html">See the 2026 mission</a>
+              <a class="btn btn--ghost" href="build.html">Start the build guide</a>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Safety &amp; Inspection — Sea Otters ROV Club</title>
+  <meta name="description" content="Pass MATE ROV safety inspection the first time: fuses, Anderson Powerpoles, strain relief, prop shrouding, and the JSEA — as a checklist you can actually use.">
+  <script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('rov-theme');if(t)d.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%A6%A6%3C/text%3E%3C/svg%3E">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <div class="pagehead">
+      <div class="wrap">
+        <nav class="breadcrumbs"><a href="index.html">Home</a> / Safety</nav>
+        <span class="eyebrow">Non-negotiable</span>
+        <h1>Pass inspection the first time</h1>
+        <p class="lead">Safety inspection is pass/fail, and you get only <strong>three attempts</strong> — fail all three and you're out of the water for good. More teams fail on wiring workmanship than on anything clever. Here's the checklist judges actually use.</p>
+      </div>
+    </div>
+
+    <div class="wrap section">
+      <div class="article">
+        <aside class="toc" aria-label="On this page">
+          <div class="toc__title">On this page</div>
+          <ul>
+            <li><a href="#electrical">Electrical &amp; fusing</a></li>
+            <li><a href="#wiring">Wiring &amp; workmanship</a></li>
+            <li><a href="#mechanical">Mechanical</a></li>
+            <li><a href="#fluid">Fluid power &amp; lasers</a></li>
+            <li><a href="#jsea">The JSEA</a></li>
+            <li><a href="#checklist">Pre-inspection checklist</a></li>
+          </ul>
+        </aside>
+
+        <div class="prose">
+
+          <div class="callout callout--crit reveal">
+            <div class="callout__title">⚠ Three strikes</div>
+            <p class="mb-0">Fail three safety inspections and you're disqualified from the underwater portion — no appeals. You can still compete in the engineering &amp; communication events, but the pool is closed to you. Rehearse the checklist like you rehearse the mission.</p>
+          </div>
+
+          <section id="electrical">
+            <h2 class="reveal">Electrical &amp; fusing</h2>
+            <ul class="checklist reveal">
+              <li><strong>One blade fuse</strong> (ATO or MINI, 32 VDC, color-coded) in the positive line, <strong>within 30 cm</strong> of the Anderson Powerpole connector. Nothing — no switch, no E-stop — sits between the connector and the fuse.</li>
+              <li><strong>Size the fuse from measured Full Load Amps in water</strong> — submerge the ROV, run all thrusters full, read the ammeter, pick the next standard size up. Do <em>not</em> add the old 150% margin.</li>
+              <li><strong>Red/black Anderson Powerpoles</strong> at the single power connection — <strong>roll-crimped</strong> (a hand "squish" crimper fails), with the two halves locked together.</li>
+              <li><strong>Bring your own spare fuses.</strong> You get exactly one replacement mid-run; a second blown fuse ends your run. MATE supplies none.</li>
+              <li><strong>No onboard batteries on the ROV</strong> — all power comes down the tether. (Only the separate float may carry a battery.)</li>
+              <li><strong>Power disconnect kills everything in under 5 seconds.</strong></li>
+              <li><strong>Never exceed 12 V nominal</strong> anywhere (the MATE supply may reach 14.8 V — you can't step it up).</li>
+            </ul>
+            <div class="table-wrap reveal">
+              <table>
+                <thead><tr><th>Measured FLA (RANGER)</th><th>Fuse</th><th>Color</th></tr></thead>
+                <tbody>
+                  <tr><td>&lt; 10.5 A</td><td>10 A</td><td>Red</td></tr>
+                  <tr><td>10.6–15.5 A</td><td>15 A</td><td>Blue</td></tr>
+                  <tr><td>15.6–20.5 A</td><td>20 A</td><td>Yellow</td></tr>
+                  <tr><td>20.6–26.3 A</td><td>25 A</td><td>Clear</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="wiring">
+            <h2 class="reveal">Wiring &amp; workmanship</h2>
+            <p class="reveal">2026 is an explicit crackdown year on wiring discipline and strain relief. This is where teams bleed points.</p>
+            <ul class="checklist reveal">
+              <li><strong>Strain relief on BOTH ends of the tether</strong> (ROV side and topside). Tape, glue, and zip ties are explicitly <em>not acceptable</em> — use a real strain-relief connector (e.g. a Kellems grip). The ROV should hang from its tether without stressing the wires.</li>
+              <li><strong>No exposed copper, no bare wire, no exposed motors.</strong> Tape alone never counts as a seal — use solder + waterproof sealant + heat-shrink (silicone self-vulcanizing tape is preferred underwater).</li>
+              <li><strong>All motors waterproofed.</strong> "Disposable" unwaterproofed motors are banned. Brushless motors count as exposed unless you can document them as sealed.</li>
+              <li><strong>Show a fuse symbol on your wiring diagram (SID)</strong> using a proper ANSI/NEMA/IEC symbol, with your measured FLA. RANGER &amp; NAVIGATOR SIDs must be <strong>CAD-drawn</strong>; SCOUT may hand-draw. Never copy MATE's example.</li>
+              <li><strong>Any AC power physically separated and labeled</strong> from DC (or state clearly that you use none).</li>
+            </ul>
+          </section>
+
+          <section id="mechanical">
+            <h2 class="reveal">Mechanical</h2>
+            <ul class="checklist reveal">
+              <li><strong>Propellers shrouded.</strong> SCOUT: enclosed in the frame or shrouded. NAVIGATOR/RANGER: full <strong>IP-20</strong> — the shroud encircles the prop, extends ≥2 mm front and back, mesh &lt;12.5 mm, and a ½" dowel or finger <em>cannot touch the blade from any angle</em>. Gears need the same (new for 2026).</li>
+              <li><strong>No sharp edges, no glass</strong> anywhere on the ROV or deck — this includes glass-faced monitors, which are banned outright. Flush-cut every zip tie.</li>
+              <li><strong>Hand-launchable</strong> — no cranes, winches, ladders, or bracing as part of launch/recovery (new for 2026).</li>
+              <li><strong>Enclosures rated for depth</strong> (up to 5 m at Worlds).</li>
+              <li>Close-toed shoes on deck; safety glasses when working on the vehicle.</li>
+            </ul>
+          </section>
+
+          <section id="fluid">
+            <h2 class="reveal">Fluid power &amp; lasers</h2>
+            <ul class="reveal">
+              <li><strong>SCOUT:</strong> manual pumps only, water or air, <strong>no pressure accumulators</strong>; any pressurized container needs a ≥¼" vent so it never exceeds ambient pressure.</li>
+              <li><strong>NAVIGATOR / RANGER powered fluid power:</strong> pass the <strong>Fluid Power Quiz at 100% by April 30, 2026</strong> (no exceptions). Hydraulic (water) ≤150 psi; pneumatic (air) ≤40 psi; regulator + shut-off + relief valve required; no SCUBA tanks; accumulators ≤1.25 L.</li>
+              <li><strong>Lasers</strong> (NAV/RANGER only): visible red ≤5 mW or green ≤1 mW, Class I/II/IIIa, powered from the surface, with a permanently-attached beam stop. Submit specs to MATE by May 15.</li>
+            </ul>
+          </section>
+
+          <section id="jsea">
+            <h2 class="reveal">The JSEA <span class="badge badge--d3">RANGER</span></h2>
+            <p class="reveal">A <strong>Job Safety &amp; Environmental Analysis</strong> is a real offshore-industry safety tool, and for RANGER it's now a <strong>gate</strong>: no JSEA at the mission station means you cannot run the product demo at all. It also earns 5 points just for being presented before setup, plus up to 10 for its quality.</p>
+            <div class="callout reveal">
+              <div class="callout__title">The three-step JSEA structure</div>
+              <ol class="mb-0">
+                <li><strong>Describe the job steps</strong> — break deck/dive operations into clear steps.</li>
+                <li><strong>Identify the hazards</strong> at each step.</li>
+                <li><strong>Assign safeguards</strong> — following the hierarchy <em>eliminate → engineer → PPE</em> — and name a person responsible for each.</li>
+              </ol>
+            </div>
+            <p class="reveal">Scope it to <strong>deck and dive operations only</strong> (setup, power-up, poolside ops, teardown) — not shop/tool safety. It's a separate document, not folded into your technical report.</p>
+          </section>
+
+          <section id="checklist">
+            <h2 class="reveal">Print-and-carry pre-inspection checklist</h2>
+            <ul class="checklist reveal">
+              <li>FLA measured in water; correct fuse selected and shown on the SID</li>
+              <li>Fuse within 30 cm of the Powerpole; nothing between</li>
+              <li>Anderson Powerpoles roll-crimped and locked together</li>
+              <li>All props and gears shrouded to IP-20</li>
+              <li>No exposed copper/motors; no glass; no sharp edges</li>
+              <li>Every splice soldered + sealed + heat-shrunk (not tape alone)</li>
+              <li>Real strain relief on both tether ends</li>
+              <li>AC separated &amp; labeled (or "no AC used")</li>
+              <li>Fluid Power Quiz passed (if using powered fluid power)</li>
+              <li>JSEA printed, scoped to deck/dive ops, in hand (RANGER)</li>
+              <li>Float has its own SID and documentation (if built)</li>
+              <li>Spare fuses in the kit</li>
+            </ul>
+            <div class="hero__actions reveal" style="margin-top:1.5rem">
+              <a class="btn btn--primary" href="scoring.html">How points are scored</a>
+              <a class="btn btn--ghost" href="resources.html">Download official safety sheets</a>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

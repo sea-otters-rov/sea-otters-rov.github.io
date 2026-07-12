@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Build Guide — Sea Otters ROV Club</title>
+  <meta name="description" content="Build a competition ROV subsystem by subsystem: frame, thrusters, buoyancy, waterproofing, tether, electronics and control, and the manipulator.">
+  <script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('rov-theme');if(t)d.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%A6%A6%3C/text%3E%3C/svg%3E">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <div class="pagehead">
+      <div class="wrap">
+        <nav class="breadcrumbs"><a href="index.html">Home</a> / Build Guide</nav>
+        <span class="eyebrow">Engineering</span>
+        <h1>Build the vehicle</h1>
+        <p class="lead">Your ROV is six subsystems working together: a frame, propulsion, buoyancy, a waterproof brain, a tether, and a manipulator. Build each one to a spec, test it alone, then combine. Here's how — and in what order.</p>
+      </div>
+    </div>
+
+    <div class="wrap section">
+      <div class="article">
+        <aside class="toc" aria-label="On this page">
+          <div class="toc__title">On this page</div>
+          <ul>
+            <li><a href="#order">Build order</a></li>
+            <li><a href="#frame">Frame</a></li>
+            <li><a href="#thrusters">Thrusters</a></li>
+            <li><a href="#buoyancy">Buoyancy</a></li>
+            <li><a href="#waterproof">Waterproofing</a></li>
+            <li><a href="#tether">Tether</a></li>
+            <li><a href="#electronics">Electronics &amp; control</a></li>
+            <li><a href="#manipulator">Manipulator</a></li>
+          </ul>
+        </aside>
+
+        <div class="prose">
+
+          <section id="order">
+            <h2 class="reveal">Build in this order</h2>
+            <p class="reveal">Don't build the whole ROV and hope. Prove each risky part in isolation first — it's far cheaper to find a leak in an empty tube than around your Raspberry Pi.</p>
+            <ol class="reveal">
+              <li><strong>One waterproof thruster + ESC in a bucket</strong> — prove you can spin and control a motor underwater.</li>
+              <li><strong>The empty watertight enclosure</strong> — vacuum-test dry, then submerge it empty.</li>
+              <li><strong>A 2-thruster test mule</strong> — validate your control code and gamepad mapping on a throwaway frame.</li>
+              <li><strong>Buoyancy on the bare frame</strong> — learn how much foam and ballast you need before final assembly.</li>
+              <li><strong>Integrate</strong> — only now build the real thing.</li>
+            </ol>
+          </section>
+
+          <section id="frame">
+            <h2 class="reveal">Frame</h2>
+            <p class="reveal">Start cheap. A ½" PVC frame is the right choice for year one — sold everywhere, cut with a hand tool, forgiving of mistakes. Upgrade to HDPE sheet (doesn't absorb water, lighter, more hydrodynamic) once you understand what actually breaks. Use aluminium extrusion sparingly — it's strong but heavy and corrodes.</p>
+            <div class="callout callout--warn reveal">
+              <div class="callout__title">RANGER weight cap</div>
+              <p class="mb-0">RANGER vehicles must stay under <strong>25 kg</strong>, and lighter earns a bonus (&lt;15 kg = +10 pts). PVC keeps you light; over-building in metal can cost real points. SCOUT and NAVIGATOR have no weight limit but still must be hand-launched.</p>
+            </div>
+          </section>
+
+          <section id="thrusters">
+            <h2 class="reveal">Thrusters &amp; propulsion</h2>
+            <p class="reveal">A simple layout you understand beats a clever one you can't debug:</p>
+            <ul class="reveal">
+              <li><strong>Start with 4 horizontal + 2 vertical thrusters</strong> — forward/reverse/yaw/strafe plus up/down. Easy to wire and to code.</li>
+              <li><strong>Commercial:</strong> Blue Robotics T100/T200 + one Basic ESC each — the default competition choice.</li>
+              <li><strong>Budget DIY:</strong> convert a 500–750 GPH bilge-pump cartridge (~$15–20) into a thruster, driven by a brushed-motor RC ESC.</li>
+              <li>Keep ESCs <strong>dry and onboard</strong>, close to the thrusters, to minimise voltage drop over the tether.</li>
+              <li><strong>Shroud every prop to IP-20</strong> (see <a href="safety.html">Safety</a>) — a finger must not reach the blade.</li>
+            </ul>
+          </section>
+
+          <section id="buoyancy">
+            <h2 class="reveal">Buoyancy</h2>
+            <p class="reveal">Tune it empirically — don't try to calculate the perfect float volume:</p>
+            <ul class="reveal">
+              <li><strong>Build slightly over-buoyant, then trim with ballast.</strong> "It's easier to add weight than to add floats."</li>
+              <li><strong>Floats on top, weights on the bottom</strong> — keeps the ROV self-righting.</li>
+              <li><strong>Aim slightly positive</strong> so the vehicle rises if you lose power or snag the tether.</li>
+              <li>Split ballast evenly front/back and left/right — uneven weight is the #1 cause of an ROV that lists.</li>
+              <li>Use rigid <strong>XPS foam</strong>, not pool noodles (which waterlog and lose buoyancy mid-session).</li>
+            </ul>
+          </section>
+
+          <section id="waterproof">
+            <h2 class="reveal">Waterproofing</h2>
+            <ul class="reveal">
+              <li><strong>Use a tube, not a box</strong> — cylindrical enclosures spread water pressure evenly.</li>
+              <li><strong>Vacuum-test before every dive.</strong> Pull a vacuum, watch the gauge. If it doesn't hold dry, it floods wet. Test the empty enclosure submerged before trusting it with electronics.</li>
+              <li><strong>Cheap DIY connectors (~$6):</strong> a PEX faucet swivel + PVC riser, cable through stepped heat-shrink, cavity potted in epoxy. Fully embed solder joints so water can't wick down the strands.</li>
+              <li>Treat "IP68" parts as "probably fine in a pool for 15 minutes," not guaranteed — pot them yourself.</li>
+              <li>Stop galvanic corrosion with Tef-Gel or dielectric grease on every dissimilar-metal joint.</li>
+            </ul>
+          </section>
+
+          <section id="tether">
+            <h2 class="reveal">Tether</h2>
+            <p class="reveal">The tether carries power and signal to the surface — and can secretly anchor your ROV. Aim for <strong>neutral-to-slightly-positive</strong> buoyancy: add small foam floats along flat Cat5, or bundle it with floating line. Run one thick power pair (not thin per-thruster wires) to cut voltage drop, and give it real strain relief at both ends. <strong>Never pull the tether to recover the ROV</strong> — it's a penalty.</p>
+          </section>
+
+          <section id="electronics">
+            <h2 class="reveal">Electronics &amp; control</h2>
+            <p class="reveal">Pick the lowest tier that meets your goals — you can always level up next season.</p>
+            <div class="table-wrap reveal">
+              <table>
+                <thead><tr><th>Stack</th><th>Gives you</th><th>Best for</th></tr></thead>
+                <tbody>
+                  <tr><td>Arduino + Basic ESC code</td><td>Direct PWM thruster control</td><td>First working prototype</td></tr>
+                  <tr><td>Raspberry Pi + Arduino/ESP32</td><td>Pi streams video; micro does fast PWM</td><td>Adding cameras &amp; logic</td></tr>
+                  <tr><td>BlueOS + ArduSub</td><td>Depth hold, stabilization, browser UI</td><td>Advanced teams</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <ul class="reveal">
+              <li><strong>Control</strong> with a standard USB gamepad — nearly every open-source stack supports it (<span class="mono">piborg/Gamepad</span>, <span class="mono">Footleg/pygame-controller</span>).</li>
+              <li><strong>Cameras:</strong> a main camera in the clear dome + a cheap second camera aimed at the claw for close-up task work.</li>
+              <li><strong>Fuse within 30 cm of the power connector</strong>, sized from measured full-load amps in water. Full details on <a href="safety.html">Safety</a>.</li>
+            </ul>
+          </section>
+
+          <section id="manipulator">
+            <h2 class="reveal">Manipulator (the claw)</h2>
+            <p class="reveal">You don't need a fancy claw — you need one matched to the mission props. Reading the 2026 tasks reveals the targets:</p>
+            <ul class="reveal">
+              <li>Most grab targets are <strong>½" PVC</strong> — design your gripper around a ½"-diameter pipe and it covers coral, basket stars, and sensors.</li>
+              <li>Several docking tasks use a <strong>Velcro hook-to-loop</strong> connection — a simple funnel or wedge end effector aligns and mates them.</li>
+              <li>Pickups often use a <strong>hook and rope</strong> — a bent hook beats a complex claw for those.</li>
+              <li>Design one versatile tool that serves several tasks before adding specialised payloads.</li>
+            </ul>
+            <div class="callout callout--tip reveal">
+              <div class="callout__title">Next step</div>
+              <p class="mb-0">The deeper "why it works and what breaks" wisdom — plus roles, practice, and the mistakes that sink teams — lives in the <a href="playbook.html">Rookie Playbook</a>. And every claim here traces back to a real source on the <a href="resources.html">Resources page</a>.</p>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>
