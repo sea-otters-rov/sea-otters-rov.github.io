@@ -395,6 +395,23 @@ h1 .badge, h2 .badge, h3 .badge { transform: translateY(-.08em); margin-right:.1
 .stat__n { font-family:var(--font-display); font-weight:900; font-size: var(--step-3); color: var(--aqua); font-variant-numeric: tabular-nums; line-height:1; }
 .stat__l { font-family:var(--font-mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); margin-top:.5rem; }
 
+/* ===================== Score bars (results page) ===================== */
+.scorebars { display:grid; gap:.85rem; margin:1.6rem 0; }
+.scorebar { display:grid; grid-template-columns: minmax(8ch,12ch) 1fr; align-items:center; gap:.9rem; }
+.scorebar__label { font-family:var(--font-mono); font-size:.72rem; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-2); }
+.scorebar__meter { display:flex; align-items:center; gap:.7rem; }
+.scorebar__track { position:relative; flex:1; height:.72rem; border-radius:999px; background:color-mix(in srgb,var(--ink-3) 20%, transparent); overflow:hidden; }
+.scorebar__fill { position:absolute; inset:0 auto 0 0; border-radius:999px; background:var(--aqua); }
+.scorebar__fill--good { background:var(--good); }
+.scorebar__fill--warn { background:var(--warn); }
+.scorebar__fill--crit { background:var(--crit); }
+.scorebar__val { font-family:var(--font-mono); font-variant-numeric:tabular-nums; font-size:.82rem; color:var(--ink-2); white-space:nowrap; }
+.scorebar.is-us .scorebar__label { color:var(--ink); font-weight:700; }
+/* Highlight our own rows in a standings/rubric table */
+tbody tr.row-us td { background: color-mix(in srgb, var(--aqua) 12%, transparent); font-weight:600; }
+tbody tr.row-us:hover td { background: color-mix(in srgb, var(--aqua) 17%, transparent); }
+td.zero { color:var(--crit); font-weight:700; }
+
 /* ===================== Contents rail (article pages) ===================== */
 .article { display:grid; gap: clamp(1.5rem, 1rem + 3vw, 3rem); grid-template-columns: 1fr; }
 @media (min-width: 1000px){ .article { grid-template-columns: 220px minmax(0,1fr); align-items:start; } }

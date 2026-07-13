@@ -18,6 +18,7 @@
       { href: "build.html",        label: "Build" },
       { href: "safety.html",       label: "Safety" },
       { href: "scoring.html",      label: "Scoring" },
+      { href: "results.html",      label: "2026 Scorecard" },
       { href: "playbook.html",     label: "Playbook" },
       { href: "resources.html",    label: "Resources" }
     ]
@@ -94,6 +95,7 @@
           '<div>' +
             '<h4>Compete</h4>' +
             '<a href="scoring.html">Scoring &amp; Deliverables</a>' +
+            '<a href="results.html">Our 2026 Scorecard</a>' +
             '<a href="playbook.html">Rookie Playbook</a>' +
             '<a href="resources.html">Resources &amp; Downloads</a>' +
             '<a href="https://materovcompetition.org" target="_blank" rel="noopener">MATE Official ↗</a>' +
