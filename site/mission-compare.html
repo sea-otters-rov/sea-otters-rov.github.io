@@ -52,7 +52,7 @@
               <div class="stat"><div class="stat__n">240</div><div class="stat__l">NAVIGATOR task points</div></div>
               <div class="stat"><div class="stat__n">350</div><div class="stat__l">RANGER task points</div></div>
               <div class="stat"><div class="stat__n">+15</div><div class="stat__l">RANGER-only bonuses</div></div>
-              <div class="stat"><div class="stat__n">15<span style="font-size:1.4rem">min</span></div><div class="stat__l">Run window (both)</div></div>
+              <div class="stat"><div class="stat__n">15<span style="font-size:1.4rem">min</span></div><div class="stat__l">Run window (RANGER; NAV per regional)</div></div>
             </div>
             <div class="table-wrap reveal">
               <table>
@@ -97,7 +97,7 @@
 
           <section id="t1">
             <h2 class="reveal"><span class="badge badge--d1">Task 1</span> Coral garden — 50 vs 85</h2>
-            <p class="reveal">A ½-inch PVC ridge on the bottom, 1–2.5 m long and about 36 cm wide, standing at an unknown height, with eight 10 cm coloured squares stuck to it as photo targets. Same prop in both classes. RANGER collects <em>two</em> corals instead of one, unlocks a photogrammetry route worth 40, and adds a flying subtask NAVIGATOR doesn't have.</p>
+            <p class="reveal">A ½-inch PVC ridge on the bottom, 1–2.5 m long and about 36 cm wide, standing at an unknown height. The garden structure is the same in both classes, but the eight 10 cm coloured squares used as photo targets are only specified in the RANGER manual. RANGER collects <em>two</em> corals instead of one, unlocks a photogrammetry route worth 40, and adds a flying subtask NAVIGATOR doesn't have.</p>
 
             <h3 class="reveal">1.1 Collect species — NAV 20 · RANGER 30</h3>
             <p class="reveal">Specimens sit on the bottom within 2 m of the garden. "Returning" one means lifting it clear of the water and setting it on the pool deck. NAVIGATOR's specimens weigh under 5 N in water; RANGER's under 15 N, so RANGER needs noticeably more lift.</p>
@@ -179,12 +179,12 @@
             <p class="reveal">The same five subtasks in both classes. RANGER adds a computer-vision tier, a keel-depth measurement, a second threat-level question, and one extra prop.</p>
 
             <h3 class="reveal">2.1 Mitigate invasive species — NAV 15 · RANGER 20</h3>
-            <p class="reveal">A 50 × 50 cm sheet of corrugated plastic underwater, covered in laminated photos of European Green crabs mixed with native Rock and Jonah crabs. You only ever report the green crabs. <strong>One attempt only</strong> — no guessing, in either class.</p>
+            <p class="reveal">A 50 × 50 cm sheet of corrugated plastic underwater, covered in laminated photos of European Green crabs mixed with native Rock and Jonah crabs. You only ever report the green crabs. In RANGER it's <strong>one attempt only</strong> — no guessing; the NAVIGATOR manual states no such rule.</p>
             <div class="table-wrap reveal">
               <table>
                 <thead><tr><th>Subtask</th><th class="num">NAV</th><th class="num">RN</th><th>What you actually do</th></tr></thead>
                 <tbody>
-                  <tr><td>Count the crabs — by image recognition</td><td class="num">—</td><td class="num">15</td><td>RANGER only, and it's genuinely automated: your program must draw a bounding box around each green crab and print the total on screen. Boxes around native crabs disqualify the attempt.</td></tr>
+                  <tr><td>Count the crabs — by image recognition</td><td class="num">—</td><td class="num">15</td><td>RANGER only, and it's genuinely automated: your program must draw a bounding box around each green crab and print the total on screen. Native crabs must not get bounding boxes and must stay out of the count.</td></tr>
                   <tr><td>Count the crabs — manually</td><td class="num">10</td><td class="num">5</td><td>A team member counts off the video feed and tells the judge. Identical work, worth double in NAVIGATOR.</td></tr>
                   <tr><td>Upload to the Invasive Species Form</td><td class="num">5</td><td class="num">5</td><td>Scan the QR code at the station, submit the count on a phone or laptop, show the judge the confirmation screen.</td></tr>
                 </tbody>
@@ -192,7 +192,7 @@
             </div>
 
             <h3 class="reveal">2.2 Iceberg tracking — NAV 25 · RANGER 35</h3>
-            <p class="reveal">A PVC-and-bubble-wrap iceberg floating in the pool. Survey it, then do desk work with a map. Threat bands are the same in both classes: red inside 5 nautical miles of a platform, yellow 5–10, green beyond 10. One minute of latitude equals one nautical mile.</p>
+            <p class="reveal">A PVC-and-bubble-wrap iceberg floating in the pool. Survey it, then do desk work with a map. Distance bands are the same in both classes: red inside 5 nautical miles of a platform, yellow 5–10, green beyond 10. One minute of latitude equals one nautical mile. RANGER adds one override for the surface-platform call: a berg whose keel is 110% or more of the water depth at the platform grounds before arriving and is always green.</p>
             <div class="table-wrap reveal">
               <table>
                 <thead><tr><th>Subtask</th><th class="num">NAV</th><th class="num">RN</th><th>What you actually do</th></tr></thead>
@@ -200,7 +200,7 @@
                   <tr><td>Survey all five perimeter numbers</td><td class="num">10</td><td class="num">10</td><td>Five digits are attached to the berg — one at each corner 15 cm below the surface, one on the bottom of an underwater leg. Show each on your video display. Only one to four found drops you to 5.</td></tr>
                   <tr><td>Measure the keel depth</td><td class="num">—</td><td class="num">10</td><td>RANGER only. A ½-inch PVC leg hangs 0.5–1.5 m down from one corner; measure how deep its tip sits below the surface. 10 within 5 cm, 5 within 5.01–10 cm, nothing beyond.</td></tr>
                   <tr><td>Threat level to the four surface platforms</td><td class="num">15</td><td class="num">10</td><td>Plot the berg's position and heading against the platform map and call green/yellow/red for each. NAV pays 15 / 10 / 5 for four / three / two correct; RANGER pays 10 for all four, 5 for three, nothing below.</td></tr>
-                  <tr><td>Threat level to the subsea assets</td><td class="num">—</td><td class="num">5</td><td>RANGER only, and all four or nothing. A different question: compare keel depth to water depth for any berg passing within 25 nm. 90–110% is red, 70–90% yellow, and both under 70% and over 110% are green — a deep enough keel grounds before it arrives.</td></tr>
+                  <tr><td>Threat level to the subsea assets</td><td class="num">—</td><td class="num">5</td><td>RANGER only, and all four or nothing. A different question: compare keel depth to water depth for any berg passing within 25 nm. 90% up to 110% is red, 70–90% yellow, and both under 70% and 110%-or-more are green — a deep enough keel grounds before it arrives.</td></tr>
                 </tbody>
               </table>
             </div>
@@ -268,13 +268,13 @@
             </div>
 
             <h3 class="reveal">3.2 Powering the platform — NAV 30 · RANGER 30</h3>
-            <p class="reveal">Same total, different composition: NAVIGATOR pays double for the pickup and skips the cover; RANGER splits those points across an extra step. RANGER's cable is 4 m to NAVIGATOR's 2 m, and RANGER's port is 1½-inch pipe versus NAVIGATOR's 2-inch.</p>
+            <p class="reveal">Same total, different composition: NAVIGATOR pays double for the pickup and skips the cover; RANGER splits those points across an extra step. RANGER's cable is 4 m to NAVIGATOR's 2 m.</p>
             <div class="table-wrap reveal">
               <table>
                 <thead><tr><th>Subtask</th><th class="num">NAV</th><th class="num">RN</th><th>What you actually do</th></tr></thead>
                 <tbody>
                   <tr><td>Retrieve the power connector</td><td class="num">10</td><td class="num">5</td><td>Lift a PVC connector off the wind-farm subsea platform by its screw hook. Dropping it later doesn't cost the points, but you'll need it back to finish.</td></tr>
-                  <tr><td>Lay the cable through the waypoint</td><td class="num">10</td><td class="num">10</td><td>Two vertical PVC posts on the bottom; the trailing cable must end up lying between them, and stay there. This is a route-planning problem — decide where the cable runs before you pick the connector up.</td></tr>
+                  <tr><td>Lay the cable through the waypoint</td><td class="num">10</td><td class="num">10</td><td>Vertical PVC posts on the bottom — four in NAVIGATOR, two in RANGER; the trailing cable must end up lying inside them, and stay there. This is a route-planning problem — decide where the cable runs before you pick the connector up.</td></tr>
                   <tr><td>Remove the port cover</td><td class="num">—</td><td class="num">5</td><td>RANGER only. Pull a 3-inch end cap off the port by its rope. The cover is debris, so return it or hold it.</td></tr>
                   <tr><td>Install the connector into the port</td><td class="num">10</td><td class="num">10</td><td>Push the connector in until the Velcro hooks on its end mate with the loops inside the port, then release. It must stay seated for the rest of the run.</td></tr>
                 </tbody>
@@ -294,7 +294,7 @@
                   <tr><td>Max size</td><td>50 cm tall, 18 cm across</td><td>1 m tall, 18 cm across</td></tr>
                   <tr><td>Profile definition</td><td>Surface → bottom → back to the surface</td><td>Descend to 2.5 m ±33 cm, hold 30 s, rise to 40 cm ±33 cm, hold 30 s, without surfacing</td></tr>
                   <tr><td>Telemetry</td><td>Not required</td><td>Required — you build the transmitter <em>and</em> the receiver</td></tr>
-                  <tr><td>Recovery</td><td>Your ROV</td><td>MATE's ROV — so a grab feature is mandatory (≥5 cm wide, protruding ≥5 cm)</td></tr>
+                  <tr><td>Recovery</td><td>The float surfaces on its own — the ROV may not touch it after deployment</td><td>Your ROV at regionals, MATE's ROV at Worlds — so a grab feature is mandatory (≥5 cm wide, protruding ≥5 cm)</td></tr>
                 </tbody>
               </table>
             </div>
@@ -354,7 +354,7 @@
             </div>
             <div class="callout callout--tip reveal">
               <div class="callout__title">The RANGER fallback</div>
-              <p>If your float never gets built, comes up silent, or logs fewer than 20 packets, ask the judge for MATE's data and graph that for 10 points. It replaces both the "communicates all data packets" 10 and your own graph — capping that block at 10 instead of 20 — but you keep the points for the profiles and for the packet sent before descending. NAVIGATOR uses MATE-supplied data by default, which makes those 10 points close to guaranteed with a prepared spreadsheet.</p>
+              <p>If your float never gets built, comes up silent, or logs fewer than 20 packets, ask the judge for MATE's data and graph that for 10 points. It replaces both the "communicates all data packets" 10 and your own graph — capping that block at 10 instead of 20 — but you keep the profile-completion points (the 30-second depth holds can only be proven from your own telemetry) and the packet sent before descending. NAVIGATOR uses MATE-supplied data by default, which makes those 10 points close to guaranteed with a prepared spreadsheet.</p>
             </div>
           </section>
 
@@ -405,7 +405,8 @@
               <li>The NAVIGATOR Part 1 manual ends Task 1 with "Total points = 85 points". Its own itemized list and the score sheet both total <strong>50</strong>. The 85 is RANGER's number, left in by copy-paste.</li>
               <li>NAVIGATOR's Mission Scope summary lists "remove the cover from the oil platform port" under Task 3, but no such subtask appears in the NAVIGATOR task breakdown or score sheet. It's a RANGER-only subtask worth 5.</li>
               <li>NAVIGATOR's eDNA frequency example table lists 8 species while the surrounding text asks for "each of the ten species". RANGER's table genuinely has 10.</li>
-              <li>The RANGER score sheet labels Task 4 as "3.1" — cosmetic, but don't let it confuse a scorekeeper.</li>
+              <li>Both regional score sheets label Task 4 as "3.1" — cosmetic, but don't let it confuse a scorekeeper.</li>
+              <li>The RANGER manual calls the oil-platform power port 1½-inch pipe in one sentence but 2-inch in two others (matching NAVIGATOR). Build for 2-inch.</li>
             </ul>
             <div class="hero__actions reveal" style="margin-top:1.5rem">
               <a class="btn btn--primary" href="mission.html">Back to the 2026 mission</a>
