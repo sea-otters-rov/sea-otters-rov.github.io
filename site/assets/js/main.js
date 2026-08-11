@@ -15,6 +15,7 @@
       { href: "start.html",        label: "Start Here" },
       { href: "classes.html",      label: "Classes" },
       { href: "mission.html",      label: "2026 Mission" },
+      { href: "mission-compare.html", label: "NAV vs RANGER" },
       { href: "build.html",        label: "Build" },
       { href: "safety.html",       label: "Safety" },
       { href: "scoring.html",      label: "Scoring" },
