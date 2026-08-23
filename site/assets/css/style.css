@@ -219,6 +219,37 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 .nav a:hover { color: var(--ink); background: var(--surface-sunk); }
 .nav a[aria-current="page"] { color: var(--aqua); background: color-mix(in srgb, var(--aqua) 12%, transparent); }
 
+/* Grouped nav (dropdowns on desktop, inline sections on mobile) */
+.nav__group { position: relative; }
+.nav__group-btn {
+  display:flex; align-items:center; gap:.35ch;
+  font: inherit; font-size:.88rem; font-weight:500; color:var(--ink-2);
+  background:none; border:0; cursor:pointer; padding:.55rem .7rem; border-radius:8px;
+}
+.nav__group-btn:hover { color: var(--ink); background: var(--surface-sunk); }
+.nav__group-btn .caret { width:12px; height:12px; transition: transform .18s ease; }
+.nav__group[data-open="true"] .nav__group-btn .caret { transform: rotate(180deg); }
+.nav__group-btn.is-current { color: var(--aqua); background: color-mix(in srgb, var(--aqua) 12%, transparent); }
+.nav__menu {
+  display:none; position:absolute; top:calc(100% + .45rem); left:0; min-width: 200px;
+  background: var(--surface); border:1px solid var(--line); border-radius: var(--radius-sm);
+  box-shadow: var(--shadow); padding:.45rem; z-index: 60;
+}
+.nav__group[data-open="true"] .nav__menu { display:grid; gap:.1rem; }
+.nav__menu a { display:block; border-radius:6px; }
+@media (max-width: 860px) {
+  .nav__group { position: static; }
+  .nav__group-btn {
+    width:100%; pointer-events:none; padding:.8rem 1rem .3rem;
+    font-family:var(--font-mono); font-size:.68rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3);
+  }
+  .nav__group-btn .caret { display:none; }
+  .nav__menu, .nav__group[data-open="true"] .nav__menu {
+    display:block; position:static; min-width:0; background:none; border:0; box-shadow:none; padding:0;
+  }
+  .nav__menu a { padding-left: 1.6rem; }
+}
+
 .hud__tools { display:flex; align-items:center; gap:.4rem; margin-left:.4rem; }
 .icon-btn {
   width: 38px; height: 38px; flex:none;
@@ -472,6 +503,27 @@ html.js .reveal.is-in { opacity:1; transform:none; }
 .linklist li::before { content:"↗"; position:absolute; left:0; color:var(--aqua); }
 .linklist a { font-weight:600; }
 .linklist span { display:block; color:var(--ink-3); font-size:.9rem; }
+
+/* ===================== Season timeline (plan) ===================== */
+.timeline { list-style:none; margin:1.8rem 0; padding:0; border-left:2px solid var(--line); }
+.tl-item { position:relative; display:grid; grid-template-columns:76px minmax(0,1fr); gap:1.1rem; padding:1.2rem 0 1.2rem 1.4rem; border-bottom:1px dashed var(--line-soft); }
+.tl-item:last-child { border-bottom:none; }
+.tl-item::before { content:""; position:absolute; left:-7px; top:1.55rem; width:12px; height:12px; border-radius:50%; background:var(--bg); border:3px solid var(--aqua); }
+.tl-item--gate::before { border-color:var(--warn); }
+.tl-when { text-align:right; }
+.tl-month { font-family:var(--font-display); font-weight:900; font-size:1.2rem; text-transform:uppercase; line-height:1.15; }
+.tl-year { font-family:var(--font-mono); font-size:.72rem; color:var(--ink-3); }
+.tl-body h3 { margin:0 0 .3rem; font-size:1.05rem; }
+.tl-body ul { margin:.3rem 0; }
+.tl-gate { margin:.7rem 0 0; font-size:.92rem; color:var(--ink-2); max-width:var(--measure); }
+.tl-gate strong { color:var(--warn); }
+.pill { display:inline-flex; align-items:center; font-family:var(--font-mono); font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; padding:.12rem .5rem; border-radius:999px; border:1px solid var(--line); vertical-align:middle; }
+.pill--gate { color:var(--warn); border-color:color-mix(in srgb,var(--warn) 45%, var(--line)); background:color-mix(in srgb,var(--warn) 10%, var(--surface)); }
+.pill--ext { color:var(--aqua); border-color:color-mix(in srgb,var(--aqua) 45%, var(--line)); background:color-mix(in srgb,var(--aqua) 10%, var(--surface)); }
+@media (max-width:560px){
+  .tl-item { grid-template-columns:1fr; gap:.3rem; }
+  .tl-when { text-align:left; display:flex; gap:.6ch; align-items:baseline; }
+}
 
 /* Utility */
 .center { text-align:center; }

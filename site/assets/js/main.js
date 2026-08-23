@@ -7,21 +7,28 @@
   "use strict";
 
   // ---- Site config: edit these to rename the club or reorder the nav ----
+  // Nav entries are either links { href, label } or groups { label, items: [...] }.
+  // Groups render as dropdowns on desktop and labeled sections in the mobile menu.
   var SITE = {
     name: "Sea&nbsp;Otters",           // club call-sign shown in the HUD
     tagline: "ROV&nbsp;CLUB",
     nav: [
-      { href: "index.html",        label: "Home" },
-      { href: "start.html",        label: "Start Here" },
-      { href: "classes.html",      label: "Classes" },
-      { href: "mission.html",      label: "2026 Mission" },
-      { href: "mission-compare.html", label: "NAV vs RANGER" },
-      { href: "build.html",        label: "Build" },
-      { href: "safety.html",       label: "Safety" },
-      { href: "scoring.html",      label: "Scoring" },
-      { href: "results.html",      label: "2026 Scorecard" },
-      { href: "playbook.html",     label: "Playbook" },
-      { href: "resources.html",    label: "Resources" }
+      { href: "index.html", label: "Home" },
+      { href: "start.html", label: "Start Here" },
+      { label: "Guide", items: [
+        { href: "classes.html",  label: "The Classes" },
+        { href: "build.html",    label: "Build Guide" },
+        { href: "safety.html",   label: "Safety" },
+        { href: "scoring.html",  label: "Scoring & Deliverables" },
+        { href: "playbook.html", label: "Rookie Playbook" }
+      ]},
+      { label: "Season", items: [
+        { href: "plan.html",            label: "Season Plan 2027" },
+        { href: "mission.html",         label: "2026 Mission" },
+        { href: "mission-compare.html", label: "NAV vs RANGER" },
+        { href: "results.html",         label: "2026 Scorecard" }
+      ]},
+      { href: "resources.html", label: "Resources" }
     ]
   };
 
@@ -30,12 +37,23 @@
   if (here === "") here = "index.html";
 
   // ---------- Header ----------
+  function navLink(n) {
+    var cur = n.href.toLowerCase() === here ? ' aria-current="page"' : "";
+    return '<a href="' + n.href + '"' + cur + ">" + n.label + "</a>";
+  }
+
   function buildHeader() {
     var host = document.getElementById("site-header");
     if (!host) return;
     var links = SITE.nav.map(function (n) {
-      var cur = n.href.toLowerCase() === here ? ' aria-current="page"' : "";
-      return '<a href="' + n.href + '"' + cur + ">" + n.label + "</a>";
+      if (!n.items) return navLink(n);
+      var inGroup = n.items.some(function (c) { return c.href.toLowerCase() === here; });
+      return '<div class="nav__group" data-open="false">' +
+        '<button class="nav__group-btn' + (inGroup ? " is-current" : "") + '" aria-expanded="false">' + n.label +
+          '<svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>' +
+        '</button>' +
+        '<div class="nav__menu">' + n.items.map(navLink).join("") + '</div>' +
+      '</div>';
     }).join("");
 
     host.innerHTML =
@@ -69,6 +87,27 @@
       if (e.target.tagName === "A") { navEl.setAttribute("data-open", "false"); toggle.setAttribute("aria-expanded", "false"); }
     });
 
+    // Dropdown groups: click toggles (one open at a time); outside click closes
+    function closeGroups(except) {
+      navEl.querySelectorAll(".nav__group").forEach(function (g) {
+        if (g === except) return;
+        g.setAttribute("data-open", "false");
+        g.querySelector(".nav__group-btn").setAttribute("aria-expanded", "false");
+      });
+    }
+    navEl.querySelectorAll(".nav__group-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var group = btn.parentElement;
+        var open = group.getAttribute("data-open") === "true";
+        closeGroups(group);
+        group.setAttribute("data-open", String(!open));
+        btn.setAttribute("aria-expanded", String(!open));
+      });
+    });
+    document.addEventListener("click", function (e) {
+      if (!navEl.contains(e.target)) closeGroups(null);
+    });
+
     document.getElementById("theme-btn").addEventListener("click", toggleTheme);
   }
 
@@ -86,18 +125,19 @@
             '<p style="color:var(--ink-3);font-size:.9rem;max-width:34ch">A student-built field guide for the MATE ROV competition. Learn it, build it, win it.</p>' +
           '</div>' +
           '<div>' +
-            '<h4>Learn</h4>' +
+            '<h4>Guide</h4>' +
             '<a href="start.html">Start Here</a>' +
             '<a href="classes.html">The Classes</a>' +
-            '<a href="mission.html">2026 Mission</a>' +
             '<a href="build.html">Build Guide</a>' +
             '<a href="safety.html">Safety</a>' +
+            '<a href="scoring.html">Scoring &amp; Deliverables</a>' +
+            '<a href="playbook.html">Rookie Playbook</a>' +
           '</div>' +
           '<div>' +
-            '<h4>Compete</h4>' +
-            '<a href="scoring.html">Scoring &amp; Deliverables</a>' +
+            '<h4>Season</h4>' +
+            '<a href="plan.html">Season Plan 2027</a>' +
+            '<a href="mission.html">2026 Mission</a>' +
             '<a href="results.html">Our 2026 Scorecard</a>' +
-            '<a href="playbook.html">Rookie Playbook</a>' +
             '<a href="resources.html">Resources &amp; Downloads</a>' +
             '<a href="https://materovcompetition.org" target="_blank" rel="noopener">MATE Official ↗</a>' +
           '</div>' +
