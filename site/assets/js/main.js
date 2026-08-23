@@ -16,11 +16,11 @@
       { href: "index.html", label: "Home" },
       { href: "start.html", label: "Start Here" },
       { label: "Guide", items: [
-        { href: "classes.html",  label: "The Classes" },
-        { href: "build.html",    label: "Build Guide" },
-        { href: "safety.html",   label: "Safety" },
-        { href: "scoring.html",  label: "Scoring & Deliverables" },
-        { href: "playbook.html", label: "Rookie Playbook" }
+        { href: "classes.html", label: "The Classes" },
+        { href: "build.html",   label: "Build Guide" },
+        { href: "safety.html",  label: "Safety" },
+        { href: "scoring.html", label: "Scoring & Deliverables" },
+        { href: "team.html",    label: "Team & Practice" }
       ]},
       { label: "Season", items: [
         { href: "plan.html",            label: "Season Plan 2027" },
@@ -131,7 +131,7 @@
             '<a href="build.html">Build Guide</a>' +
             '<a href="safety.html">Safety</a>' +
             '<a href="scoring.html">Scoring &amp; Deliverables</a>' +
-            '<a href="playbook.html">Rookie Playbook</a>' +
+            '<a href="team.html">Team &amp; Practice</a>' +
           '</div>' +
           '<div>' +
             '<h4>Season</h4>' +

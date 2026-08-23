@@ -15,7 +15,7 @@ site/                    The website (static HTML/CSS/JS)
   build.html             Build guide (frame, thrusters, …)       [Guide]
   safety.html            Safety inspection checklist + JSEA      [Guide]
   scoring.html           Scoring & deliverables                  [Guide]
-  playbook.html          Rookie playbook — community wisdom      [Guide]
+  team.html              Team & practice — roles, drills, mistakes [Guide]
   plan.html              Season Plan 2027 — our roadmap          [Season]
   mission.html           The 2026 mission, task by task          [Season]
   mission-compare.html   NAV vs RANGER, line by line             [Season]
@@ -61,16 +61,16 @@ the Actions tab (`workflow_dispatch`).
 
 ### Site
 
-- [ ] Merge `build.html` and `playbook.html` — the playbook's "Design fundamentals" and
-      "Electronics & control" sections repeat the build guide almost verbatim (~60% of the
-      page). Keep Build as the engineering guide; keep Playbook for team roles, practice,
-      and "mistakes that sink teams" — or fold those into Build/Start.
-- [ ] De-duplicate the "paperwork is 40–50% of your score" callout — it currently appears
-      on five pages (Start, Classes, Scoring, Playbook, Results). Keep the full version in
-      Scoring, reduce the rest to a one-line link.
-- [ ] Trim `resources.html` "General" downloads: drop stale/no-longer-needed PDFs
-      (2023 shipping info, Crab Samples, …) — keep what the team actually uses.
-- [ ] Slim the Home ↔ Start Here overlap (the "What is MATE" section is duplicated).
+- [x] Merge `build.html` and `playbook.html` — done: Build absorbed the hardware content
+      (toolkit, pool-day habits); the rest became `team.html` (Team & Practice: roles,
+      practice, judge Q&A, mistakes). `playbook.html` is gone.
+- [x] De-duplicate the "paperwork is 40–50% of your score" callout — full version lives
+      in Scoring (+ evidence in Results); other pages link to it in one line.
+- [x] Trim `resources.html`: dropped stale/World-Championship-only PDFs (2023 shipping,
+      Crab Samples, WC scoresheets, duplicate rubric); NAVIGATOR group opens by default,
+      RANGER marked as the 2028 target.
+- [x] Slim the Home ↔ Start Here overlap — Home keeps hero + stats + section map;
+      the "what is MATE" explainer lives only on Start Here.
 - [ ] When the 2027 mission preview drops (~Oct 1): add a 2027 mission page to the Season
       group and move the 2026 pages (mission, NAV vs RANGER, scorecard) into an archive
       subsection.
