@@ -1,0 +1,405 @@
+<title>Sea Otters 2027</title>
+<style>
+  :root {
+    --bg: #F5F9FA;
+    --surface: #FFFFFF;
+    --ink: #152530;
+    --muted: #54707E;
+    --line: #D6E2E7;
+    --accent: #0C6E8A;
+    --accent-bg: #E7F2F5;
+    --warn: #C7461B;
+    --warn-bg: #FBEDE6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0C161C;
+      --surface: #132029;
+      --ink: #DCE9EE;
+      --muted: #8BA6B2;
+      --line: #24343E;
+      --accent: #4FB3CE;
+      --accent-bg: #173039;
+      --warn: #F08A5C;
+      --warn-bg: #3A2118;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0C161C;
+    --surface: #132029;
+    --ink: #DCE9EE;
+    --muted: #8BA6B2;
+    --line: #24343E;
+    --accent: #4FB3CE;
+    --accent-bg: #173039;
+    --warn: #F08A5C;
+    --warn-bg: #3A2118;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Avenir Next", Seravek, "Segoe UI", system-ui, sans-serif;
+    line-height: 1.55;
+    margin: 0;
+    padding: 0 20px 80px;
+    font-size: 16px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; }
+
+  h1, h2, h3 {
+    font-family: "Avenir Next Condensed", Futura, "Arial Narrow", "Trebuchet MS", sans-serif;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+    margin: 0;
+  }
+  .mono {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  .eyebrow {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+  }
+
+  header { padding: 56px 0 8px; border-bottom: 3px solid var(--ink); }
+  header h1 { font-size: clamp(38px, 7vw, 58px); font-weight: 700; text-transform: uppercase; line-height: 1.05; }
+  header .dek { color: var(--muted); font-size: 18px; max-width: 62ch; margin: 10px 0 28px; }
+
+  section { margin-top: 52px; }
+  section > h2 {
+    font-size: 26px; font-weight: 700; text-transform: uppercase;
+    display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px;
+  }
+  section > h2 .eyebrow { letter-spacing: 0.1em; }
+
+  /* stat tiles */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 20px 0 14px; }
+  .stat { background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--accent); padding: 14px 16px; }
+  .stat .n { font-family: "Avenir Next Condensed", Futura, sans-serif; font-size: 30px; font-weight: 700; line-height: 1.1; }
+  .stat .l { color: var(--muted); font-size: 13.5px; margin-top: 2px; }
+  .stat.bad { border-top-color: var(--warn); }
+
+  p { max-width: 68ch; margin: 0 0 12px; }
+  .note { color: var(--muted); font-size: 14.5px; max-width: 68ch; }
+
+  ul { margin: 8px 0 12px; padding-left: 22px; max-width: 68ch; }
+  li { margin-bottom: 6px; }
+  li::marker { color: var(--accent); }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    padding: 18px 20px; margin: 14px 0;
+  }
+  .card h3 { font-size: 18px; text-transform: uppercase; margin-bottom: 8px; }
+  .card.reco { border-left: 4px solid var(--accent); }
+  .card.warnc { border-left: 4px solid var(--warn); }
+
+  .pill {
+    display: inline-block; font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 3px; vertical-align: middle;
+  }
+  .pill.gate { background: var(--warn-bg); color: var(--warn); border: 1px solid var(--warn); }
+  .pill.ext  { background: var(--accent-bg); color: var(--accent); border: 1px solid var(--accent); }
+
+  /* timeline */
+  .tl { border-left: 3px solid var(--line); margin-left: 6px; }
+  .month {
+    display: grid; grid-template-columns: 92px 1fr; gap: 14px;
+    padding: 18px 0 18px 18px; position: relative;
+    border-bottom: 1px solid var(--line);
+  }
+  .month:last-child { border-bottom: none; }
+  .month::before {
+    content: ""; position: absolute; left: -8px; top: 26px;
+    width: 13px; height: 13px; border-radius: 50%;
+    background: var(--bg); border: 3px solid var(--accent);
+  }
+  .month.has-gate::before { border-color: var(--warn); }
+  .m-when { text-align: right; }
+  .m-when .m { font-family: "Avenir Next Condensed", Futura, sans-serif; font-weight: 700; font-size: 20px; text-transform: uppercase; }
+  .m-when .y { color: var(--muted); font-size: 12.5px; }
+  .m-body h3 { font-size: 17px; margin-bottom: 6px; }
+  .m-body ul { margin-bottom: 4px; }
+  .m-body .gate-line { margin-top: 10px; font-size: 14.5px; }
+  .m-body .gate-line strong { color: var(--warn); }
+
+  /* two-jobs grid */
+  .jobs { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+
+  /* budget table */
+  .table-wrap { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; max-width: 560px; background: var(--surface); }
+  th, td { border: 1px solid var(--line); padding: 8px 12px; text-align: left; font-size: 15px; }
+  th { font-family: "Avenir Next Condensed", Futura, sans-serif; text-transform: uppercase; font-size: 13.5px; letter-spacing: 0.05em; }
+  td.num { text-align: right; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-variant-numeric: tabular-nums; }
+  tr.total td { border-top: 2px solid var(--ink); font-weight: 600; }
+
+  /* meeting checklist */
+  .decide { list-style: none; padding: 0; max-width: 68ch; }
+  .decide li {
+    background: var(--surface); border: 1px solid var(--line);
+    padding: 10px 14px; margin-bottom: 8px; display: flex; gap: 10px; align-items: baseline;
+  }
+  .decide li .k {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px;
+    color: var(--warn); flex-shrink: 0;
+  }
+
+  a { color: var(--accent); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  footer { margin-top: 64px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; }
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Sea Otters ROV Club &middot; MATE Season 2026–27</div>
+  <h1>Season Plan 2027</h1>
+  <p class="dek">Last year we were great in the pool and lost on paper. This year the plan is simple:
+  keep the pool skills, stop giving away free points, and pay our own way.</p>
+</header>
+
+<section>
+  <h2>Where we stand</h2>
+  <div class="stats">
+    <div class="stat"><div class="n">Top&nbsp;3</div><div class="l">our pool run, out of 25 teams at the 2026 regional</div></div>
+    <div class="stat bad"><div class="n">−12 pts</div><div class="l">the gap to the podium</div></div>
+    <div class="stat bad"><div class="n">15+ pts</div><div class="l">free points lost on the poster alone (missing abstract, captions, sources)</div></div>
+    <div class="stat bad"><div class="n">$650×2</div><div class="l">last season's ROV costs — paid by parents</div></div>
+  </div>
+  <p class="note">Judges also flagged: two teams with near-identical designs, and suspicion that adults built the vehicles. All of this is fixable — and fixing it costs effort, not money.</p>
+</section>
+
+<section>
+  <h2>Season goals</h2>
+  <ul>
+    <li><strong>If we compete in Scout:</strong> podium.</li>
+    <li><strong>If we compete in Navigator:</strong> top 5 is a great result.</li>
+    <li><strong>Either way:</strong> score at least 80% of the documentation &amp; poster points. That's where the podium was lost.</li>
+    <li><strong>Money:</strong> fund the season through sponsors and fundraising — and pay parents back.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Decision #1 — which class?</h2>
+  <div class="card reco">
+    <h3>Recommendation: 1 Navigator + 1–2 Scout</h3>
+    <p>Veterans build the Navigator vehicle; new members build for Scout, with veterans helping them get started.
+    Different classes = genuinely different designs, which also fixes the "identical twins" problem from last year.</p>
+  </div>
+  <div class="card warnc">
+    <h3>Why not Ranger this year</h3>
+    <ul>
+      <li>The regional allows <strong>one Ranger team per school</strong> — and that slot most likely belongs to the other team at our school already. <span class="mono">(confirm with them)</span></li>
+      <li>Ranger competes in a <strong>4&nbsp;m pool</strong>. One of our pools might be that deep — measure it. If it really is 4&nbsp;m, this argument weakens; the others still stand.</li>
+      <li>Budget: $450 registration + a realistic $1,500–2,500 build vs. our proven $650 builds.</li>
+      <li>Ranger documentation is <strong>twice the weight</strong> (100+100 pts, JSEA, CAD SID) — and documentation was our weakest side even at Scout level.</li>
+      <li>Ranger effectively requires computer vision (crab counting: 15 pts with CV vs. 5 manual). We've never done CV.</li>
+      <li>A more experienced team we know <strong>lost in Ranger last year</strong>.</li>
+      <li>Navigator already brings every new challenge on our list: required cameras, IP-20 shrouds, CAD SID, an independent profiling float.</li>
+    </ul>
+    <p class="note">The path: a strong Navigator season in 2027 → Ranger in 2028 with budget, experience, and a deep-water practice plan.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Timeline <span class="eyebrow">Aug 2026 → Apr 2027</span></h2>
+  <div class="tl">
+
+    <div class="month">
+      <div class="m-when"><div class="m">Aug</div><div class="y mono">2026</div></div>
+      <div class="m-body">
+        <h3>Kickoff</h3>
+        <ul>
+          <li>Club meeting: present this plan, discuss the class question.</li>
+          <li>Name the two leads that matter now: <strong>Documentation Lead</strong> and <strong>Marketing Lead</strong> (acting, review end of September).</li>
+          <li>Start the <strong>photo binder</strong>: whoever documents just takes photos at build sessions as we go — we sort them later. This is our proof that students build the robots.</li>
+          <li>Email the regional coordinator to join the mailing list; ask pool owners for exact depths.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="month">
+      <div class="m-when"><div class="m">Sep</div><div class="y mono">2026</div></div>
+      <div class="m-body">
+        <h3>Recruit &amp; prototype</h3>
+        <ul>
+          <li>Recruiting: posters + school events, target 2–4 new members — including people into writing, design, and video, not only engineering.</li>
+          <li>Concept mockups: Lobster, Triangle, Garbage Truck.</li>
+          <li>Doc templates built from the judges' rubrics — before there's anything to document.</li>
+          <li>Lock the fundraiser date and venue; draft the sponsor pitch packet.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="month has-gate">
+      <div class="m-when"><div class="m">Oct</div><div class="y mono">2026</div></div>
+      <div class="m-body">
+        <h3>Decide &amp; show off</h3>
+        <ul>
+          <li><span class="pill ext">MATE</span> 2027 mission preview drops (~Oct 1) — team read-through.</li>
+          <li>Decision-matrix session: score every concept on mission points, weight, cost, complexity, repairability. Then vote — on data, not vibes.</li>
+          <li>Final class decision → registration plan.</li>
+          <li><strong>Fundraiser (late Oct):</strong> last year's ROV swimming in a tank, claw demo, the game, the website. Ask for a specific dollar amount.</li>
+        </ul>
+        <p class="gate-line"><span class="pill gate">Gate</span> <strong>Oct 25:</strong> each prototype passes the checklist — 30 min submerged &amp; dry inside &middot; drives all axes &middot; picks up a ½" PVC prop &middot; photo binder up to date.</p>
+      </div>
+    </div>
+
+    <div class="month">
+      <div class="m-when"><div class="m">Nov</div><div class="y mono">2026</div></div>
+      <div class="m-body">
+        <h3>Build the winners</h3>
+        <ul>
+          <li>Build the chosen designs: frames, waterproofing, electronics, tethers.</li>
+          <li>Strain relief on <strong>every</strong> cable and capsule entry, and tug-test it before the pool. The other team lost their Ranger season when a light tug on a cord made their airtight capsule leak.</li>
+          <li>After every sprint, each subsystem owner writes 3–5 sentences: <em>what we decided and why</em>. That's 40% of the Tech Doc score, written painlessly all year.</li>
+          <li>Sponsor follow-ups and thank-you notes.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="month has-gate">
+      <div class="m-when"><div class="m">Dec</div><div class="y mono">2026</div></div>
+      <div class="m-body">
+        <h3>Rules land, designs freeze</h3>
+        <ul>
+          <li><span class="pill ext">MATE</span> Full 2027 manuals (~mid-Dec) — rules read-through weekend, update our checklists.</li>
+        </ul>
+        <p class="gate-line"><span class="pill gate">Gate</span> <strong>Dec 31 — design freeze:</strong> frames and thrusters locked. No new ideas after this. Payload tools may still adapt to the new mission.</p>
+      </div>
+    </div>
+
+    <div class="month">
+      <div class="m-when"><div class="m">Jan</div><div class="y mono">2027</div></div>
+      <div class="m-body">
+        <h3>Mission tools &amp; props</h3>
+        <ul>
+          <li>Build mission-specific tools for the new tasks.</li>
+          <li>Build practice props (~$300, official prop plans).</li>
+          <li>First full pool tests with props.</li>
+          <li>Tech Doc first draft assembled from the sprint notes.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="month has-gate">
+      <div class="m-when"><div class="m">Feb</div><div class="y mono">2027</div></div>
+      <div class="m-body">
+        <h3>Register &amp; finish building</h3>
+        <ul>
+          <li><span class="pill ext">MATE</span> Registration opens (~Feb 2 last year) — register early, the regional caps team counts.</li>
+          <li>Safety self-inspection drills: fuse placement, strain relief, prop shrouds, SID. Practice the inspection like it's a mission task.</li>
+          <li>Marketing poster draft — checked against the rubric, every free point claimed.</li>
+        </ul>
+        <p class="gate-line"><span class="pill gate">Gate</span> <strong>Feb 28 — build freeze:</strong> stop building, start practicing.</p>
+      </div>
+    </div>
+
+    <div class="month has-gate">
+      <div class="m-when"><div class="m">Mar</div><div class="y mono">2027</div></div>
+      <div class="m-body">
+        <h3>Practice &amp; paperwork</h3>
+        <ul>
+          <li>6–8 full timed mission runs in the pool.</li>
+          <li>Mock Q&amp;A with adults playing mean judges (invite the professor). Every member owns a subsystem and can answer <em>why</em> and <em>how</em>.</li>
+          <li>Poster printed; Spec Sheet done.</li>
+        </ul>
+        <p class="gate-line"><span class="pill gate">Gate</span> Documents submitted <strong>2 weeks before</strong> the official deadline. Our deadline, not MATE's.</p>
+      </div>
+    </div>
+
+    <div class="month has-gate">
+      <div class="m-when"><div class="m">Apr</div><div class="y mono">2027</div></div>
+      <div class="m-body">
+        <h3>Competition</h3>
+        <ul>
+          <li>Final polish week: checklists, spare fuses, packing list.</li>
+          <li><strong>Monterey Bay Regional</strong> — last year it was April 25 in Watsonville. Date TBD.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>The two jobs that matter</h2>
+  <p>Company titles (CEO, CMO, CSO…) get assigned in October when teams form — and MATE does require them.
+  But two real jobs need names <strong>now</strong>, as acting leads with a review at the end of September:</p>
+  <div class="jobs">
+    <div class="card">
+      <h3>Documentation Lead</h3>
+      <ul>
+        <li>Builds templates from the judges' rubrics, week one.</li>
+        <li>Collects the "what we decided and why" notes after every sprint.</li>
+        <li>Guards limits: pages, words, file names, deadlines.</li>
+        <li>Doesn't write everything — subsystem owners write their own sections. That's also Q&amp;A training.</li>
+        <li>If it's too much for one person, the role splits in two: photos/notebook and final documents.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Marketing Lead</h3>
+      <ul>
+        <li>Owns the poster — and claims every checklist point: abstract, captions, photo credits, sources, thank-yous (including MATE).</li>
+        <li>Runs the fundraiser and the sponsor pitches.</li>
+        <li>Keeps the website and the game demo ready to show.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note">When teams split in October, each lead trains a counterpart on the other team. Same standards, both teams.</p>
+</section>
+
+<section>
+  <h2>Money</h2>
+  <p>Working budget for the recommended plan (1 Navigator + 1 Scout):</p>
+  <div class="table-wrap">
+    <table>
+      <tr><th>Item</th><th>Estimate</th></tr>
+      <tr><td>Registration — Navigator</td><td class="num">$300</td></tr>
+      <tr><td>Registration — Scout</td><td class="num">$150</td></tr>
+      <tr><td>Navigator build</td><td class="num">~$1,000</td></tr>
+      <tr><td>Scout build</td><td class="num">~$650</td></tr>
+      <tr><td>Practice props</td><td class="num">~$300</td></tr>
+      <tr><td>Reserve (~20%)</td><td class="num">~$480</td></tr>
+      <tr class="total"><td>Fundraising target</td><td class="num">≈ $2,900</td></tr>
+    </table>
+  </div>
+  <p style="margin-top:12px;">Channels: direct pitches to 3–5 local companies (marine, tech, dive shops) with the demo kit, plus the October fundraiser.
+  A specific ask — <em>"we need $2,900 to build two underwater robots"</em> — beats <em>"please support our club."</em>
+  Everything raised beyond the target goes toward paying parents back.</p>
+</section>
+
+<section>
+  <h2>How we work</h2>
+  <ul>
+    <li><strong>Students' hands only.</strong> Adults advise with words; tools stay in student hands. The photo binder is our proof.</li>
+    <li><strong>Every decision gets a written "why"</strong> within a week of making it.</li>
+    <li><strong>Two meetings a week, two hats:</strong> engineering time and documentation/marketing time both get protected hours.</li>
+    <li><strong>Test, then trust.</strong> Anything that took 20+ minutes to figure out gets written down — that's the Critical Analysis section writing itself.</li>
+    <li><strong>Everyone rehearses Q&amp;A</strong> for their own subsystem. No frozen silences in front of judges.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>To decide at this meeting</h2>
+  <ol class="decide">
+    <li><span class="k">VOTE</span><span>Class plan for 2027 — recommendation: 1 Navigator + 1–2 Scout (final call in October after recruiting).</span></li>
+    <li><span class="k">NAME</span><span>Acting Documentation Lead and Marketing Lead — review at the end of September.</span></li>
+    <li><span class="k">DATE</span><span>Fundraiser date and venue.</span></li>
+    <li><span class="k">CHECK</span><span>Pool depths (both pools), and whether the school's Ranger slot is taken by the other team.</span></li>
+    <li><span class="k">ASK</span><span>Invite the professor as club advisor and mock judge for presentation practice.</span></li>
+  </ol>
+</section>
+
+<footer>
+  Sea Otters ROV Club &middot; Season plan drafted August 2026 &middot; Sources: official 2026 MATE manuals, our 2026 regional score sheets, materovcompetition.org.
+  2027 dates marked TBD are estimates from last season's calendar.
+</footer>
+</div>
