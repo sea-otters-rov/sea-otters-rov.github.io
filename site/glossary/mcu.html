@@ -5,27 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The <title> and og:title are what Google Docs shows in the link hover card. Keep them to one short sentence. -->
   <title>MCU (microcontroller): a tiny computer on one chip that reads sensors and drives motors</title>
-  <meta property="og:title" content="MCU (microcontroller): a tiny computer on one chip that reads sensors and drives motors">
-  <meta name="description" content="A microcontroller (MCU) is a small, self-contained computer on a single chip that runs one program to read sensors and control motors, lights, and other hardware.">
-  <meta property="og:description" content="A microcontroller (MCU) is a small, self-contained computer on a single chip that runs one program to read sensors and control motors, lights, and other hardware.">
+  <meta property="og:title" content="MCU (microcontroller): a tiny computer that reads sensors and drives motors">
+  <meta name="description" content="A microcontroller (MCU) is a small computer that runs one program to read sensors and control motors, lights, and other hardware.">
+  <meta property="og:description" content="A microcontroller (MCU) is a small computer that runs one program to read sensors and control motors, lights, and other hardware.">
   <meta property="og:type" content="article">
+  <script>(function(){var d=document.documentElement;try{var t=localStorage.getItem('rov-theme');if(t)d.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%A6%A6%3C/text%3E%3C/svg%3E">
 </head>
 <body>
-  <main class="container">
-    <p class="badge">Glossary</p>
-    <h1>MCU <small>(microcontroller)</small></h1>
-
-    <p>A <strong>microcontroller</strong> is a small, self-contained computer on a single chip. It has a processor, memory, and input/output pins all built in, and it runs one program over and over to read sensors and control hardware like motors, lights, and servos.</p>
-
-    <div class="callout">
-      <p><strong>On an ROV:</strong> the MCU is usually the part that turns commands from the surface into motor signals. It reads the joystick input, sends throttle signals to each thruster's ESC, and reports back sensor readings like depth, heading, or leak detection.</p>
+  <main>
+    <div class="pagehead">
+      <div class="wrap-narrow">
+        <nav class="breadcrumbs"><a href="../index.html">Home</a> / Glossary</nav>
+        <span class="eyebrow">Glossary</span>
+        <h1>MCU</h1>
+        <p class="lead">Short for <strong>microcontroller</strong>: a tiny computer on one chip that reads sensors and drives motors.</p>
+      </div>
     </div>
 
-    <h2>MCU vs. single-board computer</h2>
-    <p>An MCU (like an Arduino, Raspberry Pi Pico, or STM32) has no operating system. It starts your program instantly and reacts with precise timing, which is ideal for driving motors. A single-board computer (like a Raspberry Pi 4/5) runs Linux and can handle video and networking, but its timing is less predictable. Many ROVs use both: the computer handles cameras and communication, and the MCU handles the hardware.</p>
+    <div class="wrap-narrow section">
+      <div class="prose">
+        <p>A microcontroller has a processor, memory, and input/output pins all built into a single chip. It runs one program over and over, reading inputs and controlling hardware like motors, lights, and servos.</p>
 
+        <div class="callout">
+          <div class="callout__title">On an ROV</div>
+          <p>The MCU usually turns commands from the surface into motor signals. It reads the joystick input, sends throttle signals to each thruster's ESC, and reports back sensor readings like depth, heading, or leak detection.</p>
+        </div>
+
+        <h2>MCU vs. single-board computer</h2>
+        <p>An MCU (like an Arduino, Raspberry Pi Pico, or ESP32) has no operating system. It starts your program instantly and reacts with precise timing, which is ideal for driving motors. A single-board computer (like a Raspberry Pi 4 or 5) runs Linux and can handle video and networking, but its timing is less predictable. Many ROVs use both: the computer handles cameras and communication, and the MCU handles the hardware.</p>
+
+        <p><a href="../build.html#electronics">Electronics &amp; control in the build guide &rarr;</a></p>
+      </div>
+    </div>
   </main>
-  <script src="../assets/js/main.js"></script>
 </body>
 </html>
