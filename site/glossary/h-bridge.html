@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Link-preview tags: Google Docs only builds a rich hover card when it finds these. Image and URL must be absolute. -->
+  <title>H-bridge: four switches that run a motor both ways</title>
+  <meta name="description" content="An H-bridge is a circuit of four switches that lets a DC motor spin forward or backward from one power supply.">
+  <link rel="canonical" href="https://sea-otters-rov.github.io/glossary/h-bridge.html">
+  <meta property="og:site_name" content="Sea Otters ROV">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sea-otters-rov.github.io/glossary/h-bridge.html">
+  <meta property="og:title" content="H-bridge: four switches that run a motor both ways">
+  <meta property="og:description" content="An H-bridge is a circuit of four switches that lets a DC motor spin forward or backward from one power supply.">
+  <meta property="og:image" content="https://sea-otters-rov.github.io/glossary/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Sea Otters ROV Glossary">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>(function(){var d=document.documentElement;try{var t=localStorage.getItem('rov-theme');if(t)d.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%A6%A6%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+  <main>
+    <div class="pagehead">
+      <div class="wrap-narrow">
+        <nav class="breadcrumbs"><a href="../index.html">Home</a> / <a href="./index.html">Glossary</a></nav>
+        <span class="eyebrow">Glossary</span>
+        <h1>H-bridge</h1>
+        <p class="lead">A circuit of <strong>four switches</strong> that lets one power supply run a DC motor forward or backward.</p>
+      </div>
+    </div>
+
+    <div class="wrap-narrow section">
+      <div class="prose">
+        <p>A brushed DC motor reverses when you swap its two wires. An H-bridge does the swap electronically. The motor sits in the middle of an "H" with a switch in each leg. Close one diagonal pair and current flows through the motor one way; close the other pair and it flows the opposite way.</p>
+
+        <p>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 280" width="300" height="280" role="img" aria-label="H-bridge running forward: switches S1 and S4 are closed, so current flows left to right through the motor.">
+            <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M60 30H240M60 230H240"/>
+              <path d="M60 30V60M60 100V130M60 130V160M60 200V230"/>
+              <path d="M240 30V60M240 100V130M240 130V160M240 200V230"/>
+              <path d="M60 130H124M176 130H240"/>
+              <circle cx="150" cy="130" r="26"/>
+              <path d="M60 200L76 166M240 100L224 66"/>
+            </g>
+            <g fill="none" stroke="var(--aqua, currentColor)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M150 30H60V130H124M176 130H240V230H150"/>
+              <path d="M128 92H168"/>
+            </g>
+            <path d="M174 92L162 85V99Z" fill="var(--aqua, currentColor)"/>
+            <g fill="currentColor">
+              <circle cx="60" cy="60" r="3.5"/><circle cx="60" cy="100" r="3.5"/>
+              <circle cx="60" cy="160" r="3.5"/><circle cx="60" cy="200" r="3.5"/>
+              <circle cx="240" cy="60" r="3.5"/><circle cx="240" cy="100" r="3.5"/>
+              <circle cx="240" cy="160" r="3.5"/><circle cx="240" cy="200" r="3.5"/>
+            </g>
+            <g fill="currentColor" font-size="14">
+              <text x="150" y="135" text-anchor="middle" font-weight="700">M</text>
+              <text x="150" y="20" text-anchor="middle">+12 V</text>
+              <text x="150" y="248" text-anchor="middle">GND</text>
+              <text x="48" y="85" text-anchor="end">S1</text>
+              <text x="48" y="185" text-anchor="end">S2</text>
+              <text x="252" y="85">S3</text>
+              <text x="252" y="185">S4</text>
+              <text x="150" y="272" text-anchor="middle" font-weight="700">Forward: S1 + S4 closed</text>
+            </g>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 280" width="300" height="280" role="img" aria-label="H-bridge running in reverse: switches S2 and S3 are closed, so current flows right to left through the motor.">
+            <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M60 30H240M60 230H240"/>
+              <path d="M60 30V60M60 100V130M60 130V160M60 200V230"/>
+              <path d="M240 30V60M240 100V130M240 130V160M240 200V230"/>
+              <path d="M60 130H124M176 130H240"/>
+              <circle cx="150" cy="130" r="26"/>
+              <path d="M60 100L76 66M240 200L224 166"/>
+            </g>
+            <g fill="none" stroke="var(--coral, currentColor)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M150 30H240V130H176M124 130H60V230H150"/>
+              <path d="M132 92H172"/>
+            </g>
+            <path d="M126 92L138 85V99Z" fill="var(--coral, currentColor)"/>
+            <g fill="currentColor">
+              <circle cx="60" cy="60" r="3.5"/><circle cx="60" cy="100" r="3.5"/>
+              <circle cx="60" cy="160" r="3.5"/><circle cx="60" cy="200" r="3.5"/>
+              <circle cx="240" cy="60" r="3.5"/><circle cx="240" cy="100" r="3.5"/>
+              <circle cx="240" cy="160" r="3.5"/><circle cx="240" cy="200" r="3.5"/>
+            </g>
+            <g fill="currentColor" font-size="14">
+              <text x="150" y="135" text-anchor="middle" font-weight="700">M</text>
+              <text x="150" y="20" text-anchor="middle">+12 V</text>
+              <text x="150" y="248" text-anchor="middle">GND</text>
+              <text x="48" y="85" text-anchor="end">S1</text>
+              <text x="48" y="185" text-anchor="end">S2</text>
+              <text x="252" y="85">S3</text>
+              <text x="252" y="185">S4</text>
+              <text x="150" y="272" text-anchor="middle" font-weight="700">Reverse: S2 + S3 closed</text>
+            </g>
+          </svg>
+        </p>
+
+        <div class="callout">
+          <div class="callout__title">On an ROV</div>
+          <p>Every brushed motor that must run both ways, like a bilge-pump thruster or a claw motor, needs an H-bridge. You rarely build one: a brushed ESC or a motor-driver board already contains it, and your MCU just tells it direction and speed.</p>
+        </div>
+
+        <h2>Common confusion</h2>
+        <p>Never close both switches on the same side (S1 + S2, or S3 + S4). That shorts the supply straight to ground, which is called shoot-through. Do this, and you might let the magic smoke out!</p>
+
+        <p><a href="../build.html#thrusters">Thrusters &amp; propulsion in the build guide &rarr;</a></p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
