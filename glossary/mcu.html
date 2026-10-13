@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The <title> and og:title are what Google Docs shows in the link hover card. Keep them to one short sentence. -->
+  <title>MCU (microcontroller): a tiny computer on one chip that reads sensors and drives motors</title>
+  <meta property="og:title" content="MCU (microcontroller): a tiny computer on one chip that reads sensors and drives motors">
+  <meta name="description" content="A microcontroller (MCU) is a small, self-contained computer on a single chip that runs one program to read sensors and control motors, lights, and other hardware.">
+  <meta property="og:description" content="A microcontroller (MCU) is a small, self-contained computer on a single chip that runs one program to read sensors and control motors, lights, and other hardware.">
+  <meta property="og:type" content="article">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <main class="container">
+    <p class="badge">Glossary</p>
+    <h1>MCU <small>(microcontroller)</small></h1>
+
+    <p>A <strong>microcontroller</strong> is a small, self-contained computer on a single chip. It has a processor, memory, and input/output pins all built in, and it runs one program over and over to read sensors and control hardware like motors, lights, and servos.</p>
+
+    <div class="callout">
+      <p><strong>On an ROV:</strong> the MCU is usually the part that turns commands from the surface into motor signals. It reads the joystick input, sends throttle signals to each thruster's ESC, and reports back sensor readings like depth, heading, or leak detection.</p>
+    </div>
+
+    <h2>MCU vs. single-board computer</h2>
+    <p>An MCU (like an Arduino, Raspberry Pi Pico, or STM32) has no operating system. It starts your program instantly and reacts with precise timing, which is ideal for driving motors. A single-board computer (like a Raspberry Pi 4/5) runs Linux and can handle video and networking, but its timing is less predictable. Many ROVs use both: the computer handles cameras and communication, and the MCU handles the hardware.</p>
+
+  </main>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
